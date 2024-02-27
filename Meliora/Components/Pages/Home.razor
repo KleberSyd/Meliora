@@ -1,15 +1,52 @@
 ﻿@page "/"
 
-<PageTitle>Home</PageTitle>
+<PageTitle>R University</PageTitle>
 
-<h1>Hello Nursery University =D!</h1>
+<div class="container py-5">
+    <h1 class="mb-4">Welcome to the R University Test Interview</h1>
+    <p class="lead">
+        This application showcases a dynamic counter that counts from 1 to a user-defined limit, demonstrating the seamless integration of functionality and interactivity within a web interface. Users are empowered to start, stop, and resume the counting process, providing a hands-on experience with numerical sequences and patterns.
+    </p>
+    <p>
+        Specifically, the counter brings to light special numbers - those that are multiples of 3 are labeled "Nursing", multiples of 7 as "Meliora", and numbers that are multiples of both 3 and 7 as "Nursing Meliora". This feature adds an educational twist to the counting process, making it a fun way to explore mathematical concepts.
+    </p>
+    <p>
+        The design and functionality of the application are built using the latest web technologies, including Blazor for interactive server-side rendering and Bootstrap for styling. The application is fully responsive, ensuring a smooth user experience across all device types.
+    </p>
+    <p>
+        Through a user-friendly interface, the application aims to make learning and interaction with numbers as engaging as possible. Whether for educational purposes, entertainment, or simply to explore numerical patterns, this dynamic counter offers a unique platform for users of all ages.
+    </p>
+    <div class="row">
+        <div class="col-lg-8">
+            <h2>Namespace and File Structure Diagram</h2>
+                <pre class="bg-light p-3">
+                Meliora
+                ├── Client
+                │   └── Pages
+                │       └── Counter.razor
+                └── Services
+                    ├── Helpers
+                    │   └── DivisibilityStringMapper.cs
+                    ├── IMelioraService.cs
+                    └── MelioraService.cs
+                </pre>
 
-<div class="container">
-    Write a program that counts from 1 to 50. When the number is a
-    multiple of 3, print “Nursing”. When the number is a multiple of 7,
-    print “Meliora”. If the number is a multiple of both 3 and 7, print
-    “Nursing Meliora”. If the number is not a multiple of either 3 or 7, just
-    print the number.
-    Use a separate project to provide the output. You may use any type of
-    project / display / interface you feel would be interesting.
+            <p>
+                The application is organized into namespaces that encapsulate different aspects of the functionality. The <code>Meliora.Services.Helpers</code> namespace contains utilities, while <code>Meliora.Services</code> includes the core service interface and its implementation. This structure supports a clean separation of concerns and enhances maintainability.
+            </p>
+            <div class="mt-4">
+                <NavLink href="/counter" class="btn btn-primary">Try the Dynamic Counter</NavLink>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <h3>Features:</h3>
+            <ul class="list-group">
+                <li class="list-group-item">Dynamic counting up to a specified limit</li>
+                <li class="list-group-item">Special labels for multiples of 3 ("Nursing") and 7 ("Meliora")</li>
+                <li class="list-group-item">Ability to start, stop, and resume counting</li>
+                <li class="list-group-item">Responsive design for optimal viewing on all devices</li>
+                <li class="list-group-item">Interactive user interface with Blazor and Bootstrap</li>
+            </ul>
+        </div>
+    </div>
 </div>

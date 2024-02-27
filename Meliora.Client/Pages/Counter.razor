@@ -5,59 +5,114 @@
 
 <PageTitle>Dynamic Counter</PageTitle>
 
-<h1>Dynamic Counter</h1>
-<form>
-    <div class="form-group container">
+<div class="container mt-5">
+    <h1 class="mb-4">Dynamic Counter</h1>
+    <form @onsubmit="HandleFormSubmit">
         <div class="row">
-            <div class="col">
-                <label for="maxNumber">Count up to: </label>
-            </div>
-            <div class="col">
-                <input class="form-control" type="number" id="maxNumber" @bind="_maxNumber" />
+            <div class="col-6">
+                <div class="form-group mb-3">
+                    <label for="maxNumber">Count up to:</label>
+                    <input class="form-control" type="number" id="maxNumber" @bind="_maxNumber" />
+                </div>
             </div>
         </div>
-    </div>
-    <div class="row">
-        <button type="button" class="btn btn-primary" @onclick="StartCountingAsync" disabled="@_isCounting">Start Counting</button>
-        <button type="button" class="btn btn-secondary" @onclick="StopCounting" disabled="@(!_isCounting)">Stop Counting</button>
-    </div>
-</form>
+        <div class="btn-group" role="group" aria-label="Counter Controls">
+            @if (!_isCounting)
+            {
+                <button type="submit" class="btn btn-primary" @onclick="StartCountingAsync">Start Counting</button>
+            }
+            @if (_isCounting)
+            {
+                <button type="button" class="btn btn-secondary" @onclick="StopCounting">Stop Counting</button>
+            }
+            @if (!_isCounting && CurrentNumbers.Any() && CurrentNumbers.Count < _maxNumber)
+            {
+                <button type="button" class="btn btn-warning" @onclick="ContinueCountingAsync">Continue Counting</button>
+            }
+        </div>
+    </form>
 
-@if (CurrentNumbers.Any())
-{
-    <div>
-        @foreach (var num in CurrentNumbers)
-        {
-            <li>@num</li>
-        }
-    </div>
-}
+    @if (CurrentNumbers.Any())
+    {
+        <ul class="list-group mt-4">
+            @foreach (var num in CurrentNumbers)
+            {
+                <li class="list-group-item">@num</li>
+            }
+        </ul>
+    }
+</div>
 
 @code {
     private int _maxNumber;
-    public readonly List<string> CurrentNumbers = [];
+    public List<string> CurrentNumbers = [];
     private bool _isCounting;
     private CancellationTokenSource? _cancellationTokenSource;
+    private int _startFrom;
+    private bool _continue;
 
+    /// <summary>
+    /// Starts the counting process asynchronously.
+    /// </summary>
     private async Task StartCountingAsync()
     {
         _isCounting = true;
 
-        CurrentNumbers.Clear();
+        if (!_continue)
+        {
+            _startFrom = 0;
+            CurrentNumbers.Clear();
+        }
+
         _cancellationTokenSource = new CancellationTokenSource();
 
-        await MelioraService.CountAsync(_maxNumber, number =>
+        try
         {
-            CurrentNumbers.Add(number);
-            InvokeAsync(StateHasChanged);
-        }, _cancellationTokenSource.Token);
-
-        _isCounting = false;
+            var startFrom = _startFrom > 0 ? _startFrom : 1;
+            await MelioraService.CountAsync(_maxNumber, startFrom, (output, current) =>
+            {
+                CurrentNumbers.Add(output);
+                _startFrom = current + 1;
+                InvokeAsync(StateHasChanged);
+            }, _cancellationTokenSource.Token);
+        }
+        finally
+        {
+            _isCounting = false;
+            _continue = false;
+            await InvokeAsync(StateHasChanged);
+        }
     }
 
+    /// <summary>
+    /// Stops the counting process.
+    /// </summary>
     private void StopCounting()
     {
         _cancellationTokenSource?.Cancel();
         _isCounting = false;
+        InvokeAsync(StateHasChanged);
+    }
+
+    /// <summary>
+    /// Continues the counting process asynchronously.
+    /// </summary>
+    private async Task<Task> ContinueCountingAsync()
+    {
+        _continue = true;
+        await StartCountingAsync();
+        _continue = false;
+        return Task.CompletedTask;
+    }
+
+    /// <summary>
+    /// Handles the form submission.
+    /// </summary>
+    private async Task HandleFormSubmit()
+    {
+        if (!_isCounting)
+        {
+            await StartCountingAsync();
+        }
     }
 }
