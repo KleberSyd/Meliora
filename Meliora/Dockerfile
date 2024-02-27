@@ -21,6 +21,8 @@ FROM build AS publish
 ARG BUILD_CONFIGURATION=Release
 RUN dotnet publish "./Meliora.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
 
+RUN apt-get update && apt-get install -y curl
+
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .

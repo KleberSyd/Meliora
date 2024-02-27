@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34525.116
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Meliora", "Meliora\Meliora.csproj", "{BE2A8B83-474C-41B4-BBB1-A18F1365B944}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Meliora", "Meliora\Meliora.csproj", "{BE2A8B83-474C-41B4-BBB1-A18F1365B944}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Meliora.Client", "Meliora.Client\Meliora.Client.csproj", "{DAD7AC77-DDA0-4B20-BB5D-D2E332763478}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Meliora.Client", "Meliora.Client\Meliora.Client.csproj", "{DAD7AC77-DDA0-4B20-BB5D-D2E332763478}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Meliora.Services", "Meliora.Services\Meliora.Services.csproj", "{3CF702DF-137E-44BF-9C90-013B5CE33CA0}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Meliora.Tests", "Meliora.Tests\Meliora.Tests.csproj", "{F857945C-621F-4582-A57E-C20D1595ED99}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{0BDE4300-6038-4411-A46D-9D9DCF466ECD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{F857945C-621F-4582-A57E-C20D1595ED99}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F857945C-621F-4582-A57E-C20D1595ED99}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F857945C-621F-4582-A57E-C20D1595ED99}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0BDE4300-6038-4411-A46D-9D9DCF466ECD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0BDE4300-6038-4411-A46D-9D9DCF466ECD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0BDE4300-6038-4411-A46D-9D9DCF466ECD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0BDE4300-6038-4411-A46D-9D9DCF466ECD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
