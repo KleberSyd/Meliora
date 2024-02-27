@@ -30,7 +30,7 @@ services:
           cpus: '0.5'
           memory: '256MB'
     healthcheck:
-      test: ["CMD", "pg_isready", "--username", "rinha"]
+      test: ["CMD", "pg_isready", "--username", "runiversity"]
       interval: 15s
       timeout: 5s
       retries: 10
