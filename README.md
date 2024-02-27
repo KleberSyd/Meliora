@@ -17,7 +17,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-- [.NET 5.0](https://dotnet.microsoft.com/download) or later
+- [.NET 8.0](https://dotnet.microsoft.com/download) or later
 - A modern web browser
 
 ### Installation
@@ -25,3 +25,12 @@ These instructions will get you a copy of the project up and running on your loc
 1. Clone the repository
    ```sh
    git clone https://github.com/KleberSyd/Meliora.git
+
+2. Navigate to the project directory
+   ```sh
+   cd Meliora
+
+3. Run the application
+   ```sh
+   dotnet restore
+
