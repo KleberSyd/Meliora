@@ -14,6 +14,9 @@ EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{0BDE4300-6038-4411-A46D-9D9DCF466ECD}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sql", "sql", "{E2891B30-0D9A-4E38-A734-BDF71CB55AE1}"
+	ProjectSection(SolutionItems) = preProject
+		sql\init.sql = sql\init.sql
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

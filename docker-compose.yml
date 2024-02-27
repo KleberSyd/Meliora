@@ -16,8 +16,16 @@ services:
       ACCEPT_EULA: "Y"
     volumes:
       - sql_data:/var/opt/mssql # Persistent SQL Server data
+      - ./sql:/var/opt/sqlscripts # Mount the directory containing init.sql
     ports:
       - "1433:1433" # Default SQL Server port
+    command:
+      - /bin/bash
+      - -c
+      - |
+        /opt/mssql/bin/sqlservr & 
+        /opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P 'YourStrong!Passw0rd' -d master -i /var/opt/sqlscripts/init.sql
+        wait
 
   mailhog:
     image: mailhog/mailhog
