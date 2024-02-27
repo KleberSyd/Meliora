@@ -1,7 +1,10 @@
 using Meliora.Client.Pages;
 using Meliora.Components;
+using Meliora.Services;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddScoped<IMelioraService, MelioraService>();
 
 // Add services to the container.
 builder.Services.AddRazorComponents()

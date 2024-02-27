@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Meliora", "Meliora\Meliora.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Meliora.Client", "Meliora.Client\Meliora.Client.csproj", "{DAD7AC77-DDA0-4B20-BB5D-D2E332763478}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Meliora.Services", "..\Meliora.Services\Meliora.Services.csproj", "{18DB91EB-11D4-4745-825A-EA606E37C7DF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Meliora.Tests", "..\Meliora.Tests\Meliora.Tests.csproj", "{59AA90AC-E9B8-4F89-9DF8-D424A90B05A8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{DAD7AC77-DDA0-4B20-BB5D-D2E332763478}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DAD7AC77-DDA0-4B20-BB5D-D2E332763478}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DAD7AC77-DDA0-4B20-BB5D-D2E332763478}.Release|Any CPU.Build.0 = Release|Any CPU
+		{18DB91EB-11D4-4745-825A-EA606E37C7DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18DB91EB-11D4-4745-825A-EA606E37C7DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18DB91EB-11D4-4745-825A-EA606E37C7DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18DB91EB-11D4-4745-825A-EA606E37C7DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{59AA90AC-E9B8-4F89-9DF8-D424A90B05A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59AA90AC-E9B8-4F89-9DF8-D424A90B05A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59AA90AC-E9B8-4F89-9DF8-D424A90B05A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59AA90AC-E9B8-4F89-9DF8-D424A90B05A8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

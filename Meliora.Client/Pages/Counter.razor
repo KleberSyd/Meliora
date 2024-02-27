@@ -1,19 +1,63 @@
 ﻿@page "/counter"
+@using Meliora.Services
 @rendermode InteractiveAuto
+@inject IMelioraService MelioraService
 
-<PageTitle>Counter</PageTitle>
+<PageTitle>Dynamic Counter</PageTitle>
 
-<h1>Counter</h1>
+<h1>Dynamic Counter</h1>
+<form>
+    <div class="form-group container">
+        <div class="row">
+            <div class="col">
+                <label for="maxNumber">Count up to: </label>
+            </div>
+            <div class="col">
+                <input class="form-control" type="number" id="maxNumber" @bind="_maxNumber" />
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <button type="button" class="btn btn-primary" @onclick="StartCountingAsync" disabled="@_isCounting">Start Counting</button>
+        <button type="button" class="btn btn-secondary" @onclick="StopCounting" disabled="@(!_isCounting)">Stop Counting</button>
+    </div>
+</form>
 
-<p role="status">Current count: @currentCount</p>
-
-<button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
+@if (CurrentNumbers.Any())
+{
+    <div>
+        @foreach (var num in CurrentNumbers)
+        {
+            <li>@num</li>
+        }
+    </div>
+}
 
 @code {
-    private int currentCount = 0;
+    private int _maxNumber;
+    public readonly List<string> CurrentNumbers = [];
+    private bool _isCounting;
+    private CancellationTokenSource? _cancellationTokenSource;
 
-    private void IncrementCount()
+    private async Task StartCountingAsync()
     {
-        currentCount++;
+        _isCounting = true;
+
+        CurrentNumbers.Clear();
+        _cancellationTokenSource = new CancellationTokenSource();
+
+        await MelioraService.CountAsync(_maxNumber, number =>
+        {
+            CurrentNumbers.Add(number);
+            InvokeAsync(StateHasChanged);
+        }, _cancellationTokenSource.Token);
+
+        _isCounting = false;
+    }
+
+    private void StopCounting()
+    {
+        _cancellationTokenSource?.Cancel();
+        _isCounting = false;
     }
 }
