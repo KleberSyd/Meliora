@@ -4,6 +4,7 @@ using Meliora.Services;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddScoped<IMelioraService, MelioraService>();
+builder.Services.AddScoped<IEmailService, EmailService>();
 
 // Add services to the container.
 builder.Services.AddRazorComponents()

@@ -9,33 +9,15 @@ services:
       dockerfile: Meliora/Dockerfile
 
   db:
-    image: postgres:16.2
-    container_name: postgresdb
-    network_mode: host
-    command: 'postgres -c max_connections=300 -c shared_buffers=96MB -c checkpoint_timeout=600 -c synchronous_commit=off -c fsync=off -c full_page_writes=off -c work_mem=16MB'
-    hostname: db
+    image: mcr.microsoft.com/mssql/server:2019-latest # Use the desired SQL Server version
+    container_name: sqlserverdb
     environment:
-      - POSTGRES_PASSWORD=runiversity
-      - POSTGRES_USER=runiversity
-      - POSTGRES_DB=runiversity
+      SA_PASSWORD: "YourStrong!Passw0rd"
+      ACCEPT_EULA: "Y"
     volumes:
-#      - ./sql/ddl.sql:/docker-entrypoint-initdb.d/01-ddl.sql:ro
-#      - ./sql/criartransacao.sql:/docker-entrypoint-initdb.d/11-criartransacao.sql:ro
-#      - ./sql/resetdb.sql:/docker-entrypoint-initdb.d/21-resetdb.sql:ro
-      - type: tmpfs
-        target: /var/lib/postgresql/data
-    deploy:
-      resources:
-        limits:
-          cpus: '0.5'
-          memory: '256MB'
-    healthcheck:
-      test: ["CMD", "pg_isready", "--username", "runiversity"]
-      interval: 15s
-      timeout: 5s
-      retries: 10
-      start_period: 15s
-      start_interval: 1s
+      - sql_data:/var/opt/mssql # Persistent SQL Server data
+    ports:
+      - "1433:1433" # Default SQL Server port
 
   mailhog:
     image: mailhog/mailhog
@@ -43,3 +25,7 @@ services:
     ports:
       - "8025:8025" # Interface web do MailHog
       - "1025:1025" # SMTP server
+
+volumes:
+  sql_data:
+    driver: local
