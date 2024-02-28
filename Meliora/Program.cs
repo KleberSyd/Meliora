@@ -1,10 +1,9 @@
 using Meliora.Components;
-using Meliora.Repository.Context;
 using Meliora.Services;
-using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Add services to the container.
 builder.Services.AddScoped<IMelioraService, MelioraService>();
 builder.Services.AddScoped<IEmailService, EmailService>();
 
