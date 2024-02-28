@@ -7,6 +7,52 @@
 
 <div class="container mt-5">
     <h2 class="mb-4 text-center">Pet Queries Dashboard</h2>
+    
+    <div class="row">
+        <div class="col-md-6 mb-4">
+            <div class="card">
+                <div class="card-header">
+                    Count Breeds
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Query Code</h5>
+                    <pre class="card-text">
+SELECT breed, COUNT(breed) AS cnt
+FROM pets
+GROUP BY breed
+ORDER BY cnt DESC
+                    </pre>
+                    <h5 class="card-title mt-3">Results</h5>
+                    @if (_breedCount is { Count: > 0 })
+                    {
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Breed</th>
+                                        <th>Count</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var pet in _breedCount)
+                                    {
+                                        <tr>
+                                            <td>@pet.Breed</td>
+                                            <td>@pet.Count</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    }
+                    else
+                    {
+                        <p class="text-muted">No results found.</p>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div class="row">
         <div class="col-md-6 mb-4">
@@ -123,6 +169,7 @@ return await (from pet in context.Pets
 @code {
     private List<PetDto>? _sqlPets;
     private List<PetDto>? _lambdaPets;
+    private List<BreedCountDto>? _breedCount;
 
     protected override async Task OnInitializedAsync()
     {
@@ -133,6 +180,8 @@ return await (from pet in context.Pets
     {
         _sqlPets = await PetzService.GetPetsByRawSqlAsync();
         _lambdaPets = await PetzService.GetPetsByLambdaAsync();
+        _breedCount = await PetzService.GetBreedCountsAsync();
         StateHasChanged();
     }
 }
+
