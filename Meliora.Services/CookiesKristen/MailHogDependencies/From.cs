@@ -2,6 +2,6 @@
 
 public class From
 {
-    public string? Mailbox { get; set; }
-    public string? Domain { get; set; }
+    public required string Mailbox { get; set; }
+    public required string Domain { get; set; }
 }

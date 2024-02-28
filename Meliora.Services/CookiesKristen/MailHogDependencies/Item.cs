@@ -2,6 +2,6 @@
 
 public class Item
 {
-    public Content? Content { get; set; }
-    public From? From { get; set; }
+    public required Content Content { get; set; }
+    public required From From { get; set; }
 }

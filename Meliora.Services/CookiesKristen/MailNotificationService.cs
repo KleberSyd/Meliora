@@ -1,6 +1,12 @@
-﻿using Meliora.Services.CookiesKristen.Interfaces;
+﻿using Meliora.Domain.Enum;
+using Meliora.Domain.Models.CookiesKristen;
+using Meliora.Services.CookiesKristen.Interfaces;
 using Meliora.Services.CookiesKristen.MailHogDependencies;
 using System.Text.Json;
+using System.Text.RegularExpressions;
+using Meliora.Repository.Context;
+using Meliora.Services.Exceptions;
+using Microsoft.EntityFrameworkCore;
 
 namespace Meliora.Services.CookiesKristen;
 
@@ -29,7 +35,7 @@ public class MailNotificationService : IMailNotificationService
                 while (!_cancellationTokenSource.IsCancellationRequested)
                 {
                     await FetchMailHogMessagesAsync();
-                    
+
                     Thread.Sleep(TimeSpan.FromSeconds(30));
                 }
             }
@@ -54,10 +60,49 @@ public class MailNotificationService : IMailNotificationService
 
             var messages = JsonSerializer.Deserialize<MailhogResponse>(responseBody);
 
-            foreach (var message in messages.items)
+            if (messages != null)
             {
-                
+                foreach (var message in messages.items)
+                {
+                    var quantityMatch = Regex.Match(message.Content.Body ?? string.Empty, @"Quantity: (\d+)");
+                    var flavorsMatch = Regex.Match(message.Content.Body ?? string.Empty, @"Flavors: ([\w, ]+)");
+                    var nameMatch = Regex.Match(message.Content.Body ?? string.Empty, @"Name: ([\w ]+)");
+
+
+                    if (!quantityMatch.Success || !flavorsMatch.Success || !nameMatch.Success)
+                    {
+                        continue;
+                    }
+                    var quantity = int.Parse(quantityMatch.Groups[1].Value);
+                    var flavors = flavorsMatch.Groups[1].Value.Split([", "], StringSplitOptions.None);
+                    var name = nameMatch.Groups[1].Value;
+
+                    var mixins = flavors.Select(flavor => new Mixin(name: flavor)).ToList();
+
+                    var customer = new Customer(name, message.From.Mailbox);
+
+                    // Workaround to use the DbContext in a non-HTTP context
+                    // Blazor for some unkonwn reason is not working for Singleton and I could not pretty way to solve this for now
+                    var optionsBuilder = new DbContextOptionsBuilder<CookieKristenDbContext>();
+                    optionsBuilder.UseSqlServer("Server=db,1433;Database=CookieKristen;User=sa;Password=YourStrong!Passw0rd;TrustServerCertificate=True");
+
+                    await using var context = new CookieKristenDbContext(optionsBuilder.Options);
+
+                    await using var orderService = new OrderService(context);
+
+                    var order = new Order(customer, quantity, mixins, OrderStatus.Pending);
+
+                    try
+                    {
+                        await orderService.ProcessOrderAsync(order);
+                    }
+                    catch (FailedToOrderCookieException e)
+                    {
+                        await new MailHogService().SendEmailAsync("kristen@cookies.com", e.Message, e.Message);
+                    }
+                }
             }
+
         }
         catch (HttpRequestException e)
         {

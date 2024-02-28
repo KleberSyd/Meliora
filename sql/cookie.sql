@@ -46,6 +46,7 @@ BEGIN
         [CustomerId] int NOT NULL,
         [Quantity] int NOT NULL,
         [Status] int NOT NULL,
+        [Date] datetime NOT NULL,
         CONSTRAINT [PK_Orders] PRIMARY KEY ([Id]),
         CONSTRAINT [FK_Orders_Customers_CustomerId] FOREIGN KEY ([CustomerId]) REFERENCES [Customers] ([Id]) ON DELETE CASCADE
     );

@@ -85,6 +85,9 @@ namespace Meliora.Repository.Migrations
                     b.Property<int>("Status")
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("dateTime");
+
                     b.HasKey("Id");
 
                     b.HasIndex("CustomerId");

@@ -6,11 +6,13 @@ using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 // Add services to the container.
 //Petz Services
-builder.Services.AddTransient<IPetzService, PetzService>();
+builder.Services.AddScoped<IPetzService, PetzService>();
 
 // Cookie Kristen Services
-builder.Services.AddTransient<IMelioraService, MelioraService>();
-builder.Services.AddTransient<IMailHoglService, MailHogService>();
+builder.Services.AddScoped<IMelioraService, MelioraService>();
+builder.Services.AddScoped<IMailHoglService, MailHogService>();
+
+builder.Services.AddScoped<IOrderService, OrderService>();
 
 builder.Services.AddSingleton<IMailNotificationService>(new MailNotificationService());
 
