@@ -11,7 +11,7 @@
         <p>To initialize a new Git repository, use the following command in your terminal:</p>
         <div class="input-group mb-3">
             <input type="text" class="form-control" value="git init" readonly>
-            <button class="btn btn-outline-secondary" @onclick='() => CopyToClipboard("git init")' >Copy</button>
+            <button class="btn btn-outline-secondary" @onclick='() => CopyToClipboard("git init")'>Copy</button>
         </div>
     </section>
 
@@ -23,6 +23,49 @@
             <button class="btn btn-outline-secondary" @onclick='() => CopyToClipboard("git clone [repository-url]")'>Copy</button>
         </div>
     </section>
+
+    <section id="commit-conventions">
+        <h2>Git Commit Message Conventions</h2>
+        <p>In our repository, we use and enforce the commit message conventions verified using commitlint with the Angular config. These conventions are crucial for:</p>
+        <ul>
+            <li>Automatically generating the changelog.</li>
+            <li>Simple navigation through git history (e.g., ignoring style changes).</li>
+        </ul>
+
+        <h3>Format of the Commit Message:</h3>
+        <code>
+            &lt;type&gt;(&lt;scope&gt;): &lt;subject&gt;<br>
+            &lt;BLANK LINE&gt;<br>
+            &lt;body&gt;<br>
+            &lt;BLANK LINE&gt;<br>
+            &lt;footer&gt;
+        </code>
+
+        <h4>Example commit message:</h4>
+        <p><code>fix(middleware): ensure Range headers adhere more closely to RFC 2616</code></p>
+        <p>Add one new dependency, use `range-parser` (Express dependency) to compute range. It is more well-tested in the wild.</p>
+        <p>Fixes #2310</p>
+
+        <h3>Allowed &lt;type&gt; Values:</h3>
+        <ul>
+            <li><code>feat</code> for new features.</li>
+            <li><code>fix</code> for bug fixes.</li>
+            <li><code>perf</code> for performance improvements.</li>
+            <li><code>revert</code> for reverting changes.</li>
+            <li><code>docs</code> for documentation changes.</li>
+            <li><code>style</code> for changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc).</li>
+            <li><code>refactor</code> for code refactoring.</li>
+            <li><code>test</code> for adding missing tests or correcting existing tests.</li>
+            <li><code>chore</code> for changes to the build process or auxiliary tools and libraries such as documentation generation.</li>
+        </ul>
+
+        <h3>Example &lt;scope&gt; Values:</h3>
+        <p>init, runner, watcher, config, etc. The &lt;scope&gt; can be empty if the change is global or difficult to assign to a single component.</p>
+
+        <h3>Message Body and Footer:</h3>
+        <p>The body should include the motivation for the change and contrast with previous behavior. For referencing issues, use "Closes #issue_number". For breaking changes, clearly mention them in the footer.</p>
+    </section>
+
 
     <section id="commit-change">
         <h2>Commit a Change</h2>
@@ -47,6 +90,36 @@
             <button class="btn btn-outline-secondary" @onclick='() => CopyToClipboard("git log")'>Copy</button>
         </div>
     </section>
+
+    <section id="git-operations">
+        <h2>Common Git Operations</h2>
+
+        <h3>Git Merge</h3>
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" value="git merge <branch_name>" readonly>
+            <button class="btn btn-outline-secondary" @onclick='() => CopyToClipboard("git merge <branch_name>")'>Copy</button>
+        </div>
+
+        <h3>Git Branch</h3>
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" value="git branch <new_branch_name>" readonly>
+            <button class="btn btn-outline-secondary" @onclick='() => CopyToClipboard("git branch <new_branch_name>")'>Copy</button>
+        </div>
+
+        <h3>Git Pull</h3>
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" value="git pull" readonly>
+            <button class="btn btn-outline-secondary" @onclick='() => CopyToClipboard("git pull")'>Copy</button>
+        </div>
+
+        <h3>Git Push</h3>
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" value="git push origin <branch_name>" readonly>
+            <button class="btn btn-outline-secondary" @onclick='() => CopyToClipboard("git push origin <branch_name>")'>Copy</button>
+        </div>
+    </section>
+
+
 
     <section id="official-docs">
         <h2>Further Reading</h2>
