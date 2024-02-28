@@ -1,4 +1,15 @@
-﻿IF OBJECT_ID(N'[__EFMigrationsHistory]') IS NULL
+﻿-- Create a new database called Petz
+IF NOT EXISTS (SELECT name FROM sys.databases WHERE name = 'CookieKristen')
+BEGIN
+    CREATE DATABASE CookieKristen;
+END
+GO
+
+-- Select the database
+USE CookieKristen;
+GO
+
+IF OBJECT_ID(N'[__EFMigrationsHistory]') IS NULL
 BEGIN
     CREATE TABLE [__EFMigrationsHistory] (
         [MigrationId] nvarchar(150) NOT NULL,

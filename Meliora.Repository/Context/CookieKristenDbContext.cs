@@ -3,11 +3,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Meliora.Repository.Context;
 
-public class CookieKristenDbContext : DbContext
+public class CookieKristenDbContext(DbContextOptions<CookieKristenDbContext> options) : DbContext(options)
 {
-    public required DbSet<Customer> Customers { get; set; }
-    public required DbSet<Order> Orders { get; set; }
-    public required DbSet<Mixin> Mixins { get; set; }
+    public DbSet<Customer> Customers { get; set; }
+    public DbSet<Order> Orders { get; set; }
+    public DbSet<Mixin> Mixins { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
