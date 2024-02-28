@@ -29,6 +29,34 @@
                     <button class="btn btn-primary" @onclick="SendEmailAsync">Send Email</button>
                 </div>
             </div>
+            @if (string.IsNullOrWhiteSpace(_fromEmail) && _sendButtonClicked)
+            {
+                <div class="alert alert-danger" role="alert">
+                    Please enter an email address.
+                </div>
+            }
+
+            @if (string.IsNullOrWhiteSpace(_subject) && _sendButtonClicked)
+            {
+                <div class="alert alert-danger" role="alert">
+                    Please enter a subject.
+                </div>
+            }
+
+            @if (string.IsNullOrWhiteSpace(_body) && _sendButtonClicked)
+            {
+                <div class="alert alert-danger" role="alert">
+                    Please enter a message.
+                </div>
+            }
+
+            @if (_emailSent)
+            {
+                <div class="alert alert-primary" role="alert">
+                    Email sent!
+                    <a href="http://localhost:8025/">Click here</a> to check the email sent using MailHog.
+                </div>
+            }
         </div>
     </div>
 </div>
@@ -46,14 +74,23 @@
     private string? _fromEmail;
     private string? _subject;
     private string? _body;
+    private bool _sendButtonClicked;
+    private bool _emailSent;
 
     private async Task SendEmailAsync()
     {
+        _emailSent = false;
         if (string.IsNullOrWhiteSpace(_fromEmail) || string.IsNullOrWhiteSpace(_subject) || string.IsNullOrWhiteSpace(_body))
         {
+            _sendButtonClicked = true;
             return;
         }
 
         await EmailService.SendEmailAsync(_fromEmail, _subject, _body);
+        _fromEmail = null;
+        _subject = null;
+        _body = null;
+        _sendButtonClicked = false;
+        _emailSent = true;
     }
 }
