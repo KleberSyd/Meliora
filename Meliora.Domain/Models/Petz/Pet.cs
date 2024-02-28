@@ -13,5 +13,5 @@ public class Pet
     public bool Dead { get; set; }
 
     // Navigation property for the relationship to PersonPet
-    public ICollection<PersonPet>? PersonPets { get; set; }
+    public IEnumerable<Person>? People { get; set; }
 }

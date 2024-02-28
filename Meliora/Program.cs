@@ -1,14 +1,24 @@
 using Meliora.Components;
-using Meliora.Services;
+using Meliora.Repository.Context;
+using Meliora.Services.CoockiesKristen;
+using Meliora.Services.Petz;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+//Petz Services
+builder.Services.AddScoped<IPetzService, PetzService>();
+
+// Cookie Kristen Services
 builder.Services.AddScoped<IMelioraService, MelioraService>();
 builder.Services.AddScoped<IEmailService, EmailService>();
 
-//builder.Services.AddDbContext<PetzDbContext>(options =>
-//    options.UseSqlServer(builder.Configuration.GetConnectionString("PetzConnection")));
+builder.Services.AddHealthChecks()
+    .AddSqlServer(builder.Configuration.GetConnectionString("PetzConnection") ?? throw new InvalidOperationException());
+
+builder.Services.AddDbContext<PetzDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("PetzConnection")));
 
 //builder.Services.AddDbContext<CookieKristenDbContext>(options =>
 //    options.UseSqlServer(builder.Configuration.GetConnectionString("CookieKristenConnection")));

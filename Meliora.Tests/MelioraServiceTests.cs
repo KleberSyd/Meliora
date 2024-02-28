@@ -1,4 +1,4 @@
-using Meliora.Services;
+using Meliora.Services.CoockiesKristen;
 
 namespace Meliora.Tests
 {

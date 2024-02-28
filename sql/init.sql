@@ -9,13 +9,12 @@ GO
 USE Petz;
 GO
 
-
 -- Create tables
 
 IF OBJECT_ID('People', 'U') IS NULL
 BEGIN
     CREATE TABLE People (
-        id INT,
+        id INT PRIMARY KEY,
         first_name VARCHAR(255),
         last_name VARCHAR(255),
         age INT
@@ -25,7 +24,7 @@ END
 IF OBJECT_ID('Pets', 'U') IS NULL
 BEGIN
     CREATE TABLE Pets (
-        id INT,
+        id INT PRIMARY KEY,
         name VARCHAR(255),
         breed VARCHAR(255),
         age INT,
@@ -36,8 +35,8 @@ END
 IF OBJECT_ID('PersonPet', 'U') IS NULL
 BEGIN
     CREATE TABLE PersonPet (
-        person_id INT,
-        pet_id INT
+        person_id INT FOREIGN KEY REFERENCES People(id),
+        pet_id INT FOREIGN KEY REFERENCES Pets(id)
     );
 END
 

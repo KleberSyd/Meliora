@@ -12,5 +12,5 @@ public class Person
     public int Age { get; set; }
 
     // Navigation property for the relationship to PersonPet
-    public ICollection<PersonPet>? PersonPets { get; set; }
+    public IEnumerable<Pet>? Pets { get; set; }
 }

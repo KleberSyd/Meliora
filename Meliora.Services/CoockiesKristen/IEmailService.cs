@@ -1,4 +1,4 @@
-﻿namespace Meliora.Services;
+﻿namespace Meliora.Services.CoockiesKristen;
 
 public interface IEmailService
 {

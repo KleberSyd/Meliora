@@ -10,6 +10,6 @@ public class PersonPet
     public int PetId { get; set; }
 
     // Navigation properties
-    public required Person Person { get; set; }
-    public required Pet Pet { get; set; }
+    public virtual required Person Person { get; set; }
+    public virtual required Pet Pet { get; set; }
 }
