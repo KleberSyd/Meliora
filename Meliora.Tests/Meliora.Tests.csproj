@@ -23,7 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Meliora.Services\Meliora.Services.csproj" />
+    <ProjectReference Include="..\Meliora\Meliora.csproj" />
   </ItemGroup>
 
 </Project>

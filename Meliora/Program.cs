@@ -8,11 +8,11 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddScoped<IMelioraService, MelioraService>();
 builder.Services.AddScoped<IEmailService, EmailService>();
 
-builder.Services.AddDbContext<PetzDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("PetzConnection")));
+//builder.Services.AddDbContext<PetzDbContext>(options =>
+//    options.UseSqlServer(builder.Configuration.GetConnectionString("PetzConnection")));
 
-builder.Services.AddDbContext<CookieKristenDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("CookieKristenConnection")));
+//builder.Services.AddDbContext<CookieKristenDbContext>(options =>
+//    options.UseSqlServer(builder.Configuration.GetConnectionString("CookieKristenConnection")));
 
 // Add services to the container.
 builder.Services.AddRazorComponents()

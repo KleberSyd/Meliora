@@ -1,0 +1,62 @@
+﻿@page "/git-guide"
+
+@inject IJSRuntime JsRuntime
+
+<PageTitle>Git Quick Guide</PageTitle>
+
+
+<div class="container">
+    <section id="create-project">
+        <h2>Create a New Project</h2>
+        <p>To initialize a new Git repository, use the following command in your terminal:</p>
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" value="git init" readonly>
+            <button class="btn btn-outline-secondary" @onclick='() => CopyToClipboard("git init")' >Copy</button>
+        </div>
+    </section>
+
+    <section id="start-working">
+        <h2>Start Working on a Project</h2>
+        <p>To clone an existing repository and start working on it, use:</p>
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" value="git clone [repository-url]" readonly>
+            <button class="btn btn-outline-secondary" @onclick='() => CopyToClipboard("git clone [repository-url]")'>Copy</button>
+        </div>
+    </section>
+
+    <section id="commit-change">
+        <h2>Commit a Change</h2>
+        <p>Follow the Karma convention for commit messages. Here are some examples:</p>
+        <ul>
+            <li><code>feat: Add new login feature</code> - for new features.</li>
+            <li><code>fix: Fix bug in image loading</code> - for bug fixes.</li>
+            <li><code>style: Improve code formatting, no code change</code> - for styling.</li>
+        </ul>
+        <p>Commit your changes with a descriptive message:</p>
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" value="git commit -m 'feat: Add new login feature'" readonly>
+            <button class="btn btn-outline-secondary" @onclick='() => CopyToClipboard("git commit -m  [text description]")'>Copy</button>
+        </div>
+    </section>
+
+    <section id="search-history">
+        <h2>Search the History for a Change</h2>
+        <p>To view the commit history and search for changes, use:</p>
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" value="git log" readonly>
+            <button class="btn btn-outline-secondary" @onclick='() => CopyToClipboard("git log")'>Copy</button>
+        </div>
+    </section>
+
+    <section id="official-docs">
+        <h2>Further Reading</h2>
+        <p>For more detailed information, refer to the <a href="https://git-scm.com/doc" target="_blank">official Git documentation</a>.</p>
+    </section>
+</div>
+
+@code {
+    private async Task CopyToClipboard(string text)
+    {
+        await JsRuntime.InvokeVoidAsync("navigator.clipboard.writeText", text);
+    }
+}
