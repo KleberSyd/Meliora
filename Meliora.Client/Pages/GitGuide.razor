@@ -65,7 +65,31 @@
         <h3>Message Body and Footer:</h3>
         <p>The body should include the motivation for the change and contrast with previous behavior. For referencing issues, use "Closes #issue_number". For breaking changes, clearly mention them in the footer.</p>
     </section>
+    
+    <section id="git-commands">
+        <h2>Git Commands</h2>
 
+        <h3>Add Changes to the Staging Area</h3>
+        <p>To add changes to the staging area, use the following command:</p>
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" value="git add <file_name>" readonly>
+            <button class="btn btn-outline-secondary" @onclick='() => CopyToClipboard("git add <file_name>")'>Copy</button>
+        </div>
+
+        <h3>Unstage Changes</h3>
+        <p>If you want to unstage changes and move them back to the working directory, you can use:</p>
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" value="git restore --staged <file_name>" readonly>
+            <button class="btn btn-outline-secondary" @onclick='() => CopyToClipboard("git restore --staged <file_name>")'>Copy</button>
+        </div>
+
+        <h3>Stash Changes</h3>
+        <p>If you want to temporarily save your changes without committing them, you can use the stash command:</p>
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" value="git stash" readonly>
+            <button class="btn btn-outline-secondary" @onclick='() => CopyToClipboard("git stash")'>Copy</button>
+        </div>
+    </section>
 
     <section id="commit-change">
         <h2>Commit a Change</h2>
@@ -78,7 +102,7 @@
         <p>Commit your changes with a descriptive message:</p>
         <div class="input-group mb-3">
             <input type="text" class="form-control" value="git commit -m 'feat: Add new login feature'" readonly>
-            <button class="btn btn-outline-secondary" @onclick='() => CopyToClipboard("git commit -m  [text description]")'>Copy</button>
+            <button class="btn btn-outline-secondary" @onclick='() => CopyToClipboard("git commit -m ")'>Copy</button>
         </div>
     </section>
 
@@ -118,8 +142,6 @@
             <button class="btn btn-outline-secondary" @onclick='() => CopyToClipboard("git push origin <branch_name>")'>Copy</button>
         </div>
     </section>
-
-
 
     <section id="official-docs">
         <h2>Further Reading</h2>
