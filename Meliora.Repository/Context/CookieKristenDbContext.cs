@@ -5,13 +5,17 @@ namespace Meliora.Repository.Context;
 
 public class CookieKristenDbContext : DbContext
 {
-    public DbSet<Customer> Customers { get; set; }
-    public DbSet<Order> Orders { get; set; }
-    public DbSet<Mixin> Mixins { get; set; }
+    public required DbSet<Customer> Customers { get; set; }
+    public required DbSet<Order> Orders { get; set; }
+    public required DbSet<Mixin> Mixins { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        
+        // only for Migrations
+        if (!optionsBuilder.IsConfigured)
+        {
+            optionsBuilder.UseSqlServer("Server=db,1433;Database=CookieKristen;User=sa;Password=YourStrong!Passw0rd;TrustServerCertificate=True");
+        }
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)

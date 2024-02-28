@@ -1,3 +1,5 @@
+using Meliora.Services.CookiesKristen;
+
 namespace Meliora.Tests
 {
     public class MelioraServiceTests

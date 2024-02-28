@@ -1,13 +1,6 @@
 version: '3.4'
 
 services:
-  meliora:
-    container_name: meliorablazor
-    image: ${DOCKER_REGISTRY-}meliora
-    build:
-      context: .
-      dockerfile: Meliora/Dockerfile
-
   db:
     image: mcr.microsoft.com/mssql/server:2019-latest # Use the desired SQL Server version
     container_name: sqlserverdb
@@ -33,6 +26,13 @@ services:
     ports:
       - "8025:8025" # Interface web do MailHog
       - "1025:1025" # SMTP server
+
+  meliora:
+    container_name: meliorablazor
+    image: ${DOCKER_REGISTRY-}meliora
+    build:
+      context: .
+      dockerfile: Meliora/Dockerfile
 
 volumes:
   sql_data:

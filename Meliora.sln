@@ -15,12 +15,18 @@ Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-co
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sql", "sql", "{E2891B30-0D9A-4E38-A734-BDF71CB55AE1}"
 	ProjectSection(SolutionItems) = preProject
+		sql\cookie.sql = sql\cookie.sql
 		sql\init.sql = sql\init.sql
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Meliora.Repository", "Meliora.Repository\Meliora.Repository.csproj", "{8C3BB502-AE32-401C-BCDE-ACD20E120ABF}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Meliora.Domain", "Meliora.Domain\Meliora.Domain.csproj", "{15AA3BA6-32D0-40C7-969B-96BD6C9E5A09}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{372B1DD9-2E98-47ED-BA93-21DF1A8622B7}"
+	ProjectSection(SolutionItems) = preProject
+		init.sh = init.sh
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
