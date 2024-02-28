@@ -1,4 +1,4 @@
-﻿using Meliora.Domain.Models;
+﻿using Meliora.Domain.Models.CoockiesKristen;
 using Microsoft.EntityFrameworkCore;
 
 namespace Meliora.Repository.Context;

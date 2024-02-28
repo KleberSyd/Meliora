@@ -1,4 +1,4 @@
-﻿namespace Meliora.Domain.Models;
+﻿namespace Meliora.Domain.Models.CoockiesKristen;
 
 public class Customer
 {
