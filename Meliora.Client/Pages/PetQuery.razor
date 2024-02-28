@@ -7,9 +7,9 @@
 
 <div class="container mt-5">
     <h2 class="mb-4 text-center">Pet Queries Dashboard</h2>
-    
+
     <div class="row">
-        <div class="col-md-6 mb-4">
+        <div class="col-md-12 mb-12">
             <div class="card">
                 <div class="card-header">
                     Count Breeds
@@ -133,21 +133,21 @@ return await (from pet in context.Pets
                         <div class="table-responsive">
                             <table class="table table-striped">
                                 <thead>
-                                <tr>
-                                    <th>Name</th>
-                                    <th>Breed</th>
-                                    <th>Age</th>
-                                </tr>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Breed</th>
+                                        <th>Age</th>
+                                    </tr>
                                 </thead>
                                 <tbody>
-                                @foreach (var pet in _lambdaPets)
-                                {
-                                    <tr>
-                                        <td>@pet.Name</td>
-                                        <td>@pet.Breed</td>
-                                        <td>@pet.Age</td>
-                                    </tr>
-                                }
+                                    @foreach (var pet in _lambdaPets)
+                                    {
+                                        <tr>
+                                            <td>@pet.Name</td>
+                                            <td>@pet.Breed</td>
+                                            <td>@pet.Age</td>
+                                        </tr>
+                                    }
                                 </tbody>
                             </table>
                         </div>
@@ -161,9 +161,18 @@ return await (from pet in context.Pets
         </div>
     </div>
 
-    <div class="text-center mt-4">
-        <button class="btn btn-primary" @onclick="LoadData">Load Data</button>
-    </div>
+    <footer class="footer mt-auto py-3 bg-light">
+        <div class="container">
+            <span class="text-muted">
+                The PetzService class manages pet data in a .NET application using Entity Framework Core.
+                It includes methods to fetch pets using raw SQL and LINQ for flexibility and safety.
+                One method retrieves pets owned by people over 50 that are alive,
+                while another counts pets by breed. It demonstrates database interaction,
+                highlighting raw SQL's power and LINQ's type-safe queries,
+                making data manipulation efficient and straightforward within the .NET ecosystem.
+            </span>
+        </div>
+    </footer>
 </div>
 
 @code {
@@ -171,12 +180,13 @@ return await (from pet in context.Pets
     private List<PetDto>? _lambdaPets;
     private List<BreedCountDto>? _breedCount;
 
-    private async Task LoadData()
+    protected override async Task OnInitializedAsync()
     {
         _sqlPets = await PetzService.GetPetsByRawSqlAsync();
         _lambdaPets = await PetzService.GetPetsByLambdaAsync();
         _breedCount = await PetzService.GetBreedCountsAsync();
         StateHasChanged();
     }
+
 }
 

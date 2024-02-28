@@ -1,4 +1,4 @@
-﻿namespace Meliora.Domain.Models.CoockiesKristen;
+﻿namespace Meliora.Domain.Models.CookiesKristen;
 
 public class Mixin
 {

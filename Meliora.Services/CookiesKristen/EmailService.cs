@@ -1,6 +1,6 @@
 ﻿using System.Net.Mail;
 
-namespace Meliora.Services.CoockiesKristen;
+namespace Meliora.Services.CookiesKristen;
 
 public class EmailService : IEmailService
 {
