@@ -1,4 +1,5 @@
-﻿using Meliora.Domain.Enum;
+﻿using System.Runtime.InteropServices;
+using Meliora.Domain.Enum;
 using Meliora.Domain.Models.CookiesKristen;
 using Meliora.Services.CookiesKristen.Interfaces;
 using Meliora.Services.CookiesKristen.MailHogDependencies;
@@ -95,6 +96,7 @@ public class MailNotificationService : IMailNotificationService
                     try
                     {
                         await orderService.ProcessOrderAsync(order);
+                        await DeleteMailHogMessageAsync(message.id);
                     }
                     catch (FailedToOrderCookieException e)
                     {
@@ -111,6 +113,8 @@ public class MailNotificationService : IMailNotificationService
         }
     }
 
+    
+
 
     public void StopListening()
     {
@@ -124,5 +128,20 @@ public class MailNotificationService : IMailNotificationService
     public void Dispose()
     {
         _cancellationTokenSource.Dispose();
+    }
+    public async Task DeleteMailHogMessageAsync(string messageId)
+    {
+        try
+        {
+            var mailHogApiUrl = $"http://mailhog:8025/api/v1/messages/{messageId}";
+            var request = new HttpRequestMessage(HttpMethod.Delete, mailHogApiUrl);
+            var response = await _httpClient.SendAsync(request);
+            response.EnsureSuccessStatusCode();
+        }
+        catch (HttpRequestException e)
+        {
+            Console.WriteLine("\nException Caught!");
+            Console.WriteLine("Message: {0}", e.Message);
+        }
     }
 }

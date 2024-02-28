@@ -64,10 +64,14 @@ else
         _orders = await OrderService.GetOrdersAsync();
     }
 
+}
+
+@functions
+{
     private async Task UpdateOrder(Order order)
     {
-            await OrderService.UpdateOrderStatusAsync(order.Id);
+        await OrderService.UpdateOrderStatusAsync(order.Id);
 
-            await LoadOrdersAsync();
+        await LoadOrdersAsync();
     }
 }
