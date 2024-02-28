@@ -79,7 +79,7 @@ public class MailNotificationService : IMailNotificationService
 
                     var mixins = flavors.Select(flavor => new Mixin(name: flavor)).ToList();
 
-                    var customer = new Customer(name, message.From.Mailbox);
+                    var customer = new Customer(name, $"{message.From.Mailbox}@{message.From.Domain}");
 
                     // Workaround to use the DbContext in a non-HTTP context
                     // Blazor for some unkonwn reason is not working for Singleton and I could not pretty way to solve this for now

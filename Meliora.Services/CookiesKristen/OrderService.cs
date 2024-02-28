@@ -1,4 +1,5 @@
-﻿using Meliora.Domain.Models.CookiesKristen;
+﻿using Meliora.Domain.Enum;
+using Meliora.Domain.Models.CookiesKristen;
 using Meliora.Repository.Context;
 using Meliora.Services.CookiesKristen.Interfaces;
 using Meliora.Services.Exceptions;
@@ -44,15 +45,57 @@ public class OrderService(CookieKristenDbContext context) : IOrderService, IDisp
         await context.SaveChangesAsync();
     }
 
+    public async Task<List<Order>> GetOrdersAsync()
+    {
+        return await context.Orders
+            .Include(o => o.Customer)
+            .Include(o => o.Mixins)
+            .Where(c => c.Status == OrderStatus.Pending || c.Status == OrderStatus.InPreparation)
+            .ToListAsync();
+    }
+
+    public async Task UpdateOrderStatusAsync(int orderId)
+    {
+        var order = await context.Orders
+            .Include(o => o.Customer)
+            .FirstOrDefaultAsync(o => o.Id == orderId);
+
+        if (order is null) {throw new Exception("Order not found.");}
+
+        switch (order.Status)
+        {
+            case OrderStatus.Pending:
+                order.Status = OrderStatus.InPreparation;
+                break;
+            case OrderStatus.InPreparation:
+                order.Status = OrderStatus.Completed;
+                await SendOrderReadyEmail(order);
+                break;
+            case OrderStatus.Completed:
+                break;
+            default:
+                throw new Exception("Invalid order status.");
+        }
+
+        await context.SaveChangesAsync();
+    }
+
+    private async Task SendOrderReadyEmail(Order order)
+    {
+        await new MailHogService().SendEmailAsync(order.Customer.Email, $"order: {order.Id} it is done", 
+            $"the order {order.Id} is READY \n " +
+            $"Quantity: {order.Quantity} " +
+            $"\nFlavors: {string.Join(", ", order.Mixins.Select(m => m.Name))} " +
+            $"\nName: {order.Customer.Name}");
+    }
+
     public void Dispose()
     {
-        context.Dispose();
         context.Dispose();
     }
 
     public async ValueTask DisposeAsync()
     {
-        await context.DisposeAsync();
         await context.DisposeAsync();
     }
 }

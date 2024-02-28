@@ -1,13 +1,17 @@
 ﻿@page "/cookiesorder"
+@using Meliora.Domain.Models.CookiesKristen
+@using Meliora.Services.CookiesKristen.Interfaces
+@using Meliora.Domain.Enum
 @attribute [StreamRendering]
+@inject IOrderService OrderService
 
 <PageTitle>Cookies Order</PageTitle>
 
-<h1>Weather</h1>
+<h1>Orders</h1>
 
-<p>This component demonstrates showing data.</p>
+<p>This component demonstrates showing cookie orders.</p>
 
-@if (_forecasts == null)
+@if (_orders == null)
 {
     <p><em>Loading...</em></p>
 }
@@ -16,20 +20,31 @@ else
     <table class="table">
         <thead>
             <tr>
-                <th>Date</th>
-                <th>Temp. (C)</th>
-                <th>Temp. (F)</th>
-                <th>Summary</th>
+                <th>Order Id</th>
+                <th>Name</th>
+                <th>Mixins</th>
+                <th>Status</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>
-            @foreach (var forecast in _forecasts)
+            @foreach (var order in _orders)
             {
                 <tr>
-                    <td>@forecast.Date.ToShortDateString()</td>
-                    <td>@forecast.TemperatureC</td>
-                    <td>@forecast.TemperatureF</td>
-                    <td>@forecast.Summary</td>
+                    <td>@order.Id</td>
+                    <td>@order.Customer.Name</td>
+                    <td>@string.Join(", ", order.Mixins.Select(m => m.Name))</td>
+                    <td>@order.Status</td>
+                    <td>
+                        @if (order.Status != OrderStatus.Completed)
+                        {
+                            <button @onclick="() => UpdateOrder(order)">Update Status</button>
+                        }
+                        else
+                        {
+                            <text>Completed</text>
+                        }
+                    </td>
                 </tr>
             }
         </tbody>
@@ -37,28 +52,22 @@ else
 }
 
 @code {
-    private WeatherForecast[]? _forecasts;
+    private List<Order>? _orders;
 
     protected override async Task OnInitializedAsync()
     {
-        // Simulate asynchronous loading to demonstrate streaming rendering
-        await Task.Delay(500);
-
-        var startDate = DateOnly.FromDateTime(DateTime.Now);
-        var summaries = new[] { "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching" };
-        _forecasts = Enumerable.Range(1, 5).Select(index => new WeatherForecast
-        {
-            Date = startDate.AddDays(index),
-            TemperatureC = Random.Shared.Next(-20, 55),
-            Summary = summaries[Random.Shared.Next(summaries.Length)]
-        }).ToArray();
+        await LoadOrdersAsync();
     }
 
-    private class WeatherForecast
+    private async Task LoadOrdersAsync()
     {
-        public DateOnly Date { get; set; }
-        public int TemperatureC { get; set; }
-        public string? Summary { get; set; }
-        public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
+        _orders = await OrderService.GetOrdersAsync();
+    }
+
+    private async Task UpdateOrder(Order order)
+    {
+            await OrderService.UpdateOrderStatusAsync(order.Id);
+
+            await LoadOrdersAsync();
     }
 }
