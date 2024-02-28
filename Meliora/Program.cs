@@ -1,10 +1,18 @@
 using Meliora.Components;
+using Meliora.Repository.Context;
 using Meliora.Services;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddScoped<IMelioraService, MelioraService>();
 builder.Services.AddScoped<IEmailService, EmailService>();
+
+builder.Services.AddDbContext<PetzDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("PetzConnection")));
+
+builder.Services.AddDbContext<CookieKristenDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("CookieKristenConnection")));
 
 // Add services to the container.
 builder.Services.AddRazorComponents()
