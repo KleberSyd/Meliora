@@ -171,11 +171,6 @@ return await (from pet in context.Pets
     private List<PetDto>? _lambdaPets;
     private List<BreedCountDto>? _breedCount;
 
-    protected override async Task OnInitializedAsync()
-    {
-        await LoadData();
-    }
-
     private async Task LoadData()
     {
         _sqlPets = await PetzService.GetPetsByRawSqlAsync();

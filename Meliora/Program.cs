@@ -2,9 +2,15 @@ using Meliora.Components;
 using Meliora.Repository.Context;
 using Meliora.Services.CoockiesKristen;
 using Meliora.Services.Petz;
+using Microsoft.AspNetCore.DataProtection;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
+
+// Add services to the container.
+builder.Services.AddRazorComponents()
+    .AddInteractiveServerComponents()
+    .AddInteractiveWebAssemblyComponents();
 
 // Add services to the container.
 //Petz Services
@@ -17,16 +23,11 @@ builder.Services.AddScoped<IEmailService, EmailService>();
 builder.Services.AddHealthChecks()
     .AddSqlServer(builder.Configuration.GetConnectionString("PetzConnection") ?? throw new InvalidOperationException());
 
+// builder.Services.AddDbContext<CookieKristenDbContext>(options =>
+// options.UseSqlServer(builder.Configuration.GetConnectionString("CookieKristenConnection")));
+
 builder.Services.AddDbContext<PetzDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("PetzConnection")));
-
-//builder.Services.AddDbContext<CookieKristenDbContext>(options =>
-//    options.UseSqlServer(builder.Configuration.GetConnectionString("CookieKristenConnection")));
-
-// Add services to the container.
-builder.Services.AddRazorComponents()
-    .AddInteractiveServerComponents()
-    .AddInteractiveWebAssemblyComponents();
 
 var app = builder.Build();
 
