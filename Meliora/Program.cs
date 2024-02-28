@@ -17,7 +17,7 @@ builder.Services.AddTransient<IPetzService, PetzService>();
 
 // Cookie Kristen Services
 builder.Services.AddTransient<IMelioraService, MelioraService>();
-builder.Services.AddTransient<IEmailService, EmailService>();
+builder.Services.AddTransient<IMailHoglService, MailHogService>();
 
 builder.Services.AddHealthChecks()
     .AddSqlServer(builder.Configuration.GetConnectionString("PetzConnection") ?? throw new InvalidOperationException());

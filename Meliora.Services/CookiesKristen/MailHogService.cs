@@ -2,7 +2,7 @@
 
 namespace Meliora.Services.CookiesKristen;
 
-public class EmailService : IEmailService
+public class MailHogService : IMailHoglService
 {
     public async Task SendEmailAsync(string from, string subject, string body)
     {
