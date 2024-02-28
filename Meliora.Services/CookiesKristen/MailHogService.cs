@@ -1,4 +1,5 @@
 ﻿using System.Net.Mail;
+using Meliora.Services.CookiesKristen.Interfaces;
 
 namespace Meliora.Services.CookiesKristen;
 

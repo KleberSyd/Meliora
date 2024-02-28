@@ -1,6 +1,7 @@
 using Meliora.Components;
 using Meliora.Repository.Context;
 using Meliora.Services.CookiesKristen;
+using Meliora.Services.CookiesKristen.Interfaces;
 using Meliora.Services.Petz;
 using Microsoft.EntityFrameworkCore;
 
@@ -18,6 +19,9 @@ builder.Services.AddTransient<IPetzService, PetzService>();
 // Cookie Kristen Services
 builder.Services.AddTransient<IMelioraService, MelioraService>();
 builder.Services.AddTransient<IMailHoglService, MailHogService>();
+
+
+builder.Services.AddSingleton<IMailNotificationService>(new MailNotificationService());
 
 builder.Services.AddHealthChecks()
     .AddSqlServer(builder.Configuration.GetConnectionString("PetzConnection") ?? throw new InvalidOperationException());

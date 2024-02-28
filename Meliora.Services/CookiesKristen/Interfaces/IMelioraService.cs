@@ -1,4 +1,4 @@
-﻿namespace Meliora.Services.CookiesKristen;
+﻿namespace Meliora.Services.CookiesKristen.Interfaces;
 
 public interface IMelioraService
 {
