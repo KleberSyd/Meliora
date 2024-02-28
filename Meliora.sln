@@ -18,6 +18,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sql", "sql", "{E2891B30-0D9
 		sql\init.sql = sql\init.sql
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Meliora.Repository", "Meliora.Repository\Meliora.Repository.csproj", "{8C3BB502-AE32-401C-BCDE-ACD20E120ABF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Meliora.Domain", "Meliora.Domain\Meliora.Domain.csproj", "{15AA3BA6-32D0-40C7-969B-96BD6C9E5A09}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -44,6 +48,14 @@ Global
 		{0BDE4300-6038-4411-A46D-9D9DCF466ECD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0BDE4300-6038-4411-A46D-9D9DCF466ECD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0BDE4300-6038-4411-A46D-9D9DCF466ECD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C3BB502-AE32-401C-BCDE-ACD20E120ABF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C3BB502-AE32-401C-BCDE-ACD20E120ABF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C3BB502-AE32-401C-BCDE-ACD20E120ABF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C3BB502-AE32-401C-BCDE-ACD20E120ABF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{15AA3BA6-32D0-40C7-969B-96BD6C9E5A09}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15AA3BA6-32D0-40C7-969B-96BD6C9E5A09}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15AA3BA6-32D0-40C7-969B-96BD6C9E5A09}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15AA3BA6-32D0-40C7-969B-96BD6C9E5A09}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
