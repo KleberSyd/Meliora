@@ -11,7 +11,7 @@ public class EmailService : IEmailService
 
         var smtp = new SmtpClient
         {
-            Host = "localhost",
+            Host = "mailhog",
             Port = 1025,
             EnableSsl = false,
             DeliveryMethod = SmtpDeliveryMethod.Network,
