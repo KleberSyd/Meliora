@@ -1,0 +1,74 @@
+\doxysection{Meliora.\+Client/\+Program.cs File Reference}
+\hypertarget{_meliora_8_client_2_program_8cs}{}\label{_meliora_8_client_2_program_8cs}\index{Meliora.Client/Program.cs@{Meliora.Client/Program.cs}}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+builder.\+Services. \mbox{\hyperlink{_meliora_8_client_2_program_8cs_a4e29b5da6ded118a467176152c966b08}{Add\+Scoped$<$ IPetz\+Service, Petz\+Service $>$}} ()
+\item 
+builder.\+Services. \mbox{\hyperlink{_meliora_8_client_2_program_8cs_adc2f071a49e75cb355deed991e12032f}{Add\+Scoped$<$ IMeliora\+Service, Meliora\+Service $>$}} ()
+\item 
+builder.\+Services. \mbox{\hyperlink{_meliora_8_client_2_program_8cs_a71b218e914b4d7c32e4222ea867190d1}{Add\+Scoped$<$ IMail\+Hogl\+Service, Mail\+Hog\+Service $>$}} ()
+\item 
+builder.\+Services. \mbox{\hyperlink{_meliora_8_client_2_program_8cs_a36ffc1f617c5ab9141e06616d2667277}{Add\+Scoped$<$ IOrder\+Service, Order\+Service $>$}} ()
+\item 
+builder.\+Services. \mbox{\hyperlink{_meliora_8_client_2_program_8cs_a02691799bfcd5282a622e5c0617137f6}{Add\+Singleton$<$ IMail\+Notification\+Service $>$}} (new \mbox{\hyperlink{class_meliora_1_1_services_1_1_cookies_kristen_1_1_mail_notification_service}{Mail\+Notification\+Service}}())
+\item 
+await builder. \mbox{\hyperlink{_meliora_8_client_2_program_8cs_a103eab9352a5901779f62f6c98b53f7b}{Build}} ().Run\+Async()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+var \mbox{\hyperlink{_meliora_8_client_2_program_8cs_a2f78352277081c620fd4cf92a5ce15e5}{builder}} = Web\+Assembly\+Host\+Builder.\+Create\+Default(args)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{_meliora_8_client_2_program_8cs_a71b218e914b4d7c32e4222ea867190d1}\label{_meliora_8_client_2_program_8cs_a71b218e914b4d7c32e4222ea867190d1} 
+\index{Program.cs@{Program.cs}!AddScoped$<$ IMailHoglService, MailHogService $>$@{AddScoped$<$ IMailHoglService, MailHogService $>$}}
+\index{AddScoped$<$ IMailHoglService, MailHogService $>$@{AddScoped$<$ IMailHoglService, MailHogService $>$}!Program.cs@{Program.cs}}
+\doxysubsubsection{\texorpdfstring{AddScoped$<$ IMailHoglService, MailHogService $>$()}{AddScoped< IMailHoglService, MailHogService >()}}
+{\footnotesize\ttfamily builder.\+Services. Add\+Scoped$<$ \mbox{\hyperlink{interface_meliora_1_1_services_1_1_cookies_kristen_1_1_interfaces_1_1_i_mail_hogl_service}{IMail\+Hogl\+Service}}, \mbox{\hyperlink{class_meliora_1_1_services_1_1_cookies_kristen_1_1_mail_hog_service}{Mail\+Hog\+Service}} $>$ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\Hypertarget{_meliora_8_client_2_program_8cs_adc2f071a49e75cb355deed991e12032f}\label{_meliora_8_client_2_program_8cs_adc2f071a49e75cb355deed991e12032f} 
+\index{Program.cs@{Program.cs}!AddScoped$<$ IMelioraService, MelioraService $>$@{AddScoped$<$ IMelioraService, MelioraService $>$}}
+\index{AddScoped$<$ IMelioraService, MelioraService $>$@{AddScoped$<$ IMelioraService, MelioraService $>$}!Program.cs@{Program.cs}}
+\doxysubsubsection{\texorpdfstring{AddScoped$<$ IMelioraService, MelioraService $>$()}{AddScoped< IMelioraService, MelioraService >()}}
+{\footnotesize\ttfamily builder.\+Services. Add\+Scoped$<$ \mbox{\hyperlink{interface_meliora_1_1_services_1_1_cookies_kristen_1_1_interfaces_1_1_i_meliora_service}{IMeliora\+Service}}, \mbox{\hyperlink{class_meliora_1_1_services_1_1_cookies_kristen_1_1_meliora_service}{Meliora\+Service}} $>$ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\Hypertarget{_meliora_8_client_2_program_8cs_a36ffc1f617c5ab9141e06616d2667277}\label{_meliora_8_client_2_program_8cs_a36ffc1f617c5ab9141e06616d2667277} 
+\index{Program.cs@{Program.cs}!AddScoped$<$ IOrderService, OrderService $>$@{AddScoped$<$ IOrderService, OrderService $>$}}
+\index{AddScoped$<$ IOrderService, OrderService $>$@{AddScoped$<$ IOrderService, OrderService $>$}!Program.cs@{Program.cs}}
+\doxysubsubsection{\texorpdfstring{AddScoped$<$ IOrderService, OrderService $>$()}{AddScoped< IOrderService, OrderService >()}}
+{\footnotesize\ttfamily builder.\+Services. Add\+Scoped$<$ \mbox{\hyperlink{interface_meliora_1_1_services_1_1_cookies_kristen_1_1_interfaces_1_1_i_order_service}{IOrder\+Service}}, Order\+Service $>$ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\Hypertarget{_meliora_8_client_2_program_8cs_a4e29b5da6ded118a467176152c966b08}\label{_meliora_8_client_2_program_8cs_a4e29b5da6ded118a467176152c966b08} 
+\index{Program.cs@{Program.cs}!AddScoped$<$ IPetzService, PetzService $>$@{AddScoped$<$ IPetzService, PetzService $>$}}
+\index{AddScoped$<$ IPetzService, PetzService $>$@{AddScoped$<$ IPetzService, PetzService $>$}!Program.cs@{Program.cs}}
+\doxysubsubsection{\texorpdfstring{AddScoped$<$ IPetzService, PetzService $>$()}{AddScoped< IPetzService, PetzService >()}}
+{\footnotesize\ttfamily builder.\+Services. Add\+Scoped$<$ \mbox{\hyperlink{interface_meliora_1_1_services_1_1_petz_1_1_i_petz_service}{IPetz\+Service}}, Petz\+Service $>$ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\Hypertarget{_meliora_8_client_2_program_8cs_a02691799bfcd5282a622e5c0617137f6}\label{_meliora_8_client_2_program_8cs_a02691799bfcd5282a622e5c0617137f6} 
+\index{Program.cs@{Program.cs}!AddSingleton$<$ IMailNotificationService $>$@{AddSingleton$<$ IMailNotificationService $>$}}
+\index{AddSingleton$<$ IMailNotificationService $>$@{AddSingleton$<$ IMailNotificationService $>$}!Program.cs@{Program.cs}}
+\doxysubsubsection{\texorpdfstring{AddSingleton$<$ IMailNotificationService $>$()}{AddSingleton< IMailNotificationService >()}}
+{\footnotesize\ttfamily builder.\+Services. Add\+Singleton$<$ \mbox{\hyperlink{interface_meliora_1_1_services_1_1_cookies_kristen_1_1_interfaces_1_1_i_mail_notification_service}{IMail\+Notification\+Service}} $>$ (\begin{DoxyParamCaption}\item[{new }]{Mail\+Notification\+Service() }\end{DoxyParamCaption})}
+
+\Hypertarget{_meliora_8_client_2_program_8cs_a103eab9352a5901779f62f6c98b53f7b}\label{_meliora_8_client_2_program_8cs_a103eab9352a5901779f62f6c98b53f7b} 
+\index{Program.cs@{Program.cs}!Build@{Build}}
+\index{Build@{Build}!Program.cs@{Program.cs}}
+\doxysubsubsection{\texorpdfstring{Build()}{Build()}}
+{\footnotesize\ttfamily await builder. Build (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{_meliora_8_client_2_program_8cs_a2f78352277081c620fd4cf92a5ce15e5}\label{_meliora_8_client_2_program_8cs_a2f78352277081c620fd4cf92a5ce15e5} 
+\index{Program.cs@{Program.cs}!builder@{builder}}
+\index{builder@{builder}!Program.cs@{Program.cs}}
+\doxysubsubsection{\texorpdfstring{builder}{builder}}
+{\footnotesize\ttfamily var builder = Web\+Assembly\+Host\+Builder.\+Create\+Default(args)}
+
+
+
+Definition at line \mbox{\hyperlink{_meliora_8_client_2_program_8cs_source_l00006}{6}} of file \mbox{\hyperlink{_meliora_8_client_2_program_8cs_source}{Program.\+cs}}.
+

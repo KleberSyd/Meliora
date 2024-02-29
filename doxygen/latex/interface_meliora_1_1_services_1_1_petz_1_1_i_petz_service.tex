@@ -1,0 +1,65 @@
+\doxysection{Meliora.\+Services.\+Petz.\+IPetz\+Service Interface Reference}
+\hypertarget{interface_meliora_1_1_services_1_1_petz_1_1_i_petz_service}{}\label{interface_meliora_1_1_services_1_1_petz_1_1_i_petz_service}\index{Meliora.Services.Petz.IPetzService@{Meliora.Services.Petz.IPetzService}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+Task$<$ List$<$ \mbox{\hyperlink{class_meliora_1_1_services_1_1_petz_1_1_dto_1_1_pet_dto}{Pet\+Dto}} $>$?$>$ \mbox{\hyperlink{interface_meliora_1_1_services_1_1_petz_1_1_i_petz_service_aeb9ea2f5fcbe7daa10bc3d7d8c08de61}{Get\+Pets\+By\+Raw\+Sql\+Async}} ()
+\begin{DoxyCompactList}\small\item\em Retrieves a list of pets using raw SQL query. \end{DoxyCompactList}\item 
+Task$<$ List$<$ \mbox{\hyperlink{class_meliora_1_1_services_1_1_petz_1_1_dto_1_1_pet_dto}{Pet\+Dto}} $>$ $>$ \mbox{\hyperlink{interface_meliora_1_1_services_1_1_petz_1_1_i_petz_service_a54d97ab8783699085f12ed7f9099499d}{Get\+Pets\+By\+Lambda\+Async}} ()
+\begin{DoxyCompactList}\small\item\em Retrieves a list of pets using LINQ query. \end{DoxyCompactList}\item 
+Task$<$ List$<$ \mbox{\hyperlink{class_meliora_1_1_services_1_1_petz_1_1_dto_1_1_breed_count_dto}{Breed\+Count\+Dto}} $>$ $>$ \mbox{\hyperlink{interface_meliora_1_1_services_1_1_petz_1_1_i_petz_service_a22786815e291c4ea3fb070791736cc21}{Get\+Breed\+Counts\+Async}} ()
+\begin{DoxyCompactList}\small\item\em Retrieves a list of breed counts for pets. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{_i_petz_service_8cs_source_l00005}{5}} of file \mbox{\hyperlink{_i_petz_service_8cs_source}{IPetz\+Service.\+cs}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{interface_meliora_1_1_services_1_1_petz_1_1_i_petz_service_a22786815e291c4ea3fb070791736cc21}\label{interface_meliora_1_1_services_1_1_petz_1_1_i_petz_service_a22786815e291c4ea3fb070791736cc21} 
+\index{Meliora.Services.Petz.IPetzService@{Meliora.Services.Petz.IPetzService}!GetBreedCountsAsync@{GetBreedCountsAsync}}
+\index{GetBreedCountsAsync@{GetBreedCountsAsync}!Meliora.Services.Petz.IPetzService@{Meliora.Services.Petz.IPetzService}}
+\doxysubsubsection{\texorpdfstring{GetBreedCountsAsync()}{GetBreedCountsAsync()}}
+{\footnotesize\ttfamily Task$<$ List$<$ \mbox{\hyperlink{class_meliora_1_1_services_1_1_petz_1_1_dto_1_1_breed_count_dto}{Breed\+Count\+Dto}} $>$ $>$ Meliora.\+Services.\+Petz.\+IPetz\+Service.\+Get\+Breed\+Counts\+Async (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Retrieves a list of breed counts for pets. 
+
+\begin{DoxyReturn}{Returns}
+The list of breed counts.
+\end{DoxyReturn}
+\Hypertarget{interface_meliora_1_1_services_1_1_petz_1_1_i_petz_service_a54d97ab8783699085f12ed7f9099499d}\label{interface_meliora_1_1_services_1_1_petz_1_1_i_petz_service_a54d97ab8783699085f12ed7f9099499d} 
+\index{Meliora.Services.Petz.IPetzService@{Meliora.Services.Petz.IPetzService}!GetPetsByLambdaAsync@{GetPetsByLambdaAsync}}
+\index{GetPetsByLambdaAsync@{GetPetsByLambdaAsync}!Meliora.Services.Petz.IPetzService@{Meliora.Services.Petz.IPetzService}}
+\doxysubsubsection{\texorpdfstring{GetPetsByLambdaAsync()}{GetPetsByLambdaAsync()}}
+{\footnotesize\ttfamily Task$<$ List$<$ \mbox{\hyperlink{class_meliora_1_1_services_1_1_petz_1_1_dto_1_1_pet_dto}{Pet\+Dto}} $>$ $>$ Meliora.\+Services.\+Petz.\+IPetz\+Service.\+Get\+Pets\+By\+Lambda\+Async (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Retrieves a list of pets using LINQ query. 
+
+\begin{DoxyReturn}{Returns}
+The list of pets.
+\end{DoxyReturn}
+\Hypertarget{interface_meliora_1_1_services_1_1_petz_1_1_i_petz_service_aeb9ea2f5fcbe7daa10bc3d7d8c08de61}\label{interface_meliora_1_1_services_1_1_petz_1_1_i_petz_service_aeb9ea2f5fcbe7daa10bc3d7d8c08de61} 
+\index{Meliora.Services.Petz.IPetzService@{Meliora.Services.Petz.IPetzService}!GetPetsByRawSqlAsync@{GetPetsByRawSqlAsync}}
+\index{GetPetsByRawSqlAsync@{GetPetsByRawSqlAsync}!Meliora.Services.Petz.IPetzService@{Meliora.Services.Petz.IPetzService}}
+\doxysubsubsection{\texorpdfstring{GetPetsByRawSqlAsync()}{GetPetsByRawSqlAsync()}}
+{\footnotesize\ttfamily Task$<$ List$<$ \mbox{\hyperlink{class_meliora_1_1_services_1_1_petz_1_1_dto_1_1_pet_dto}{Pet\+Dto}} $>$?$>$ Meliora.\+Services.\+Petz.\+IPetz\+Service.\+Get\+Pets\+By\+Raw\+Sql\+Async (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Retrieves a list of pets using raw SQL query. 
+
+\begin{DoxyReturn}{Returns}
+The list of pets.
+\end{DoxyReturn}
+
+
+The documentation for this interface was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Meliora.\+Services/\+Petz/\mbox{\hyperlink{_i_petz_service_8cs}{IPetz\+Service.\+cs}}\end{DoxyCompactItemize}

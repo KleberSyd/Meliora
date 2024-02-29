@@ -1,0 +1,79 @@
+\doxysection{Meliora\+Service\+Tests.\+cs}
+\hypertarget{_meliora_service_tests_8cs_source}{}\label{_meliora_service_tests_8cs_source}\index{Meliora.Tests/MelioraServiceTests.cs@{Meliora.Tests/MelioraServiceTests.cs}}
+\mbox{\hyperlink{_meliora_service_tests_8cs}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_meliora_service_tests_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_meliora_1_1_services_1_1_cookies_kristen}{Meliora.Services.CookiesKristen}};}
+\DoxyCodeLine{\Hypertarget{_meliora_service_tests_8cs_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{_meliora_service_tests_8cs_source_l00003}\mbox{\hyperlink{namespace_meliora_1_1_tests}{00003}}\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_meliora_1_1_tests}{Meliora.Tests}}}
+\DoxyCodeLine{\Hypertarget{_meliora_service_tests_8cs_source_l00004}00004\ \{}
+\DoxyCodeLine{\Hypertarget{_meliora_service_tests_8cs_source_l00005}\mbox{\hyperlink{class_meliora_1_1_tests_1_1_meliora_service_tests}{00005}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_meliora_1_1_tests_1_1_meliora_service_tests}{MelioraServiceTests}}}
+\DoxyCodeLine{\Hypertarget{_meliora_service_tests_8cs_source_l00006}00006\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_meliora_service_tests_8cs_source_l00011}00011\ \ \ \ \ \ \ \ \ [Fact]}
+\DoxyCodeLine{\Hypertarget{_meliora_service_tests_8cs_source_l00012}\mbox{\hyperlink{class_meliora_1_1_tests_1_1_meliora_service_tests_acf68c16eb785e8610cd402fb9e59abb0}{00012}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ async\ Task\ \mbox{\hyperlink{class_meliora_1_1_tests_1_1_meliora_service_tests_acf68c16eb785e8610cd402fb9e59abb0}{GetDivisibilityString\_ShouldReturnDivisibilityString}}()}
+\DoxyCodeLine{\Hypertarget{_meliora_service_tests_8cs_source_l00013}00013\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_meliora_service_tests_8cs_source_l00014}00014\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Arrange}}
+\DoxyCodeLine{\Hypertarget{_meliora_service_tests_8cs_source_l00015}00015\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ value\ =\ 15;}
+\DoxyCodeLine{\Hypertarget{_meliora_service_tests_8cs_source_l00016}00016\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\ expectedDivisibilityString\ =\ \textcolor{stringliteral}{"{}Nursing"{}};}
+\DoxyCodeLine{\Hypertarget{_meliora_service_tests_8cs_source_l00017}00017\ \ \ \ \ \ \ \ \ \ \ \ \ var\ melioraService\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_meliora_1_1_services_1_1_cookies_kristen_1_1_meliora_service}{MelioraService}}();}
+\DoxyCodeLine{\Hypertarget{_meliora_service_tests_8cs_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{_meliora_service_tests_8cs_source_l00019}00019\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Act}}
+\DoxyCodeLine{\Hypertarget{_meliora_service_tests_8cs_source_l00020}00020\ \ \ \ \ \ \ \ \ \ \ \ \ var\ divisibilityString\ =\ await\ melioraService.GetDivisibilityString(value);}
+\DoxyCodeLine{\Hypertarget{_meliora_service_tests_8cs_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{_meliora_service_tests_8cs_source_l00022}00022\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Assert}}
+\DoxyCodeLine{\Hypertarget{_meliora_service_tests_8cs_source_l00023}00023\ \ \ \ \ \ \ \ \ \ \ \ \ Assert.Equal(expectedDivisibilityString,\ divisibilityString);}
+\DoxyCodeLine{\Hypertarget{_meliora_service_tests_8cs_source_l00024}00024\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_meliora_service_tests_8cs_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{_meliora_service_tests_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ [Fact]}
+\DoxyCodeLine{\Hypertarget{_meliora_service_tests_8cs_source_l00031}\mbox{\hyperlink{class_meliora_1_1_tests_1_1_meliora_service_tests_a24ac10a87de0bc24510eb1623ccd7718}{00031}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ async\ Task\ \mbox{\hyperlink{class_meliora_1_1_tests_1_1_meliora_service_tests_a24ac10a87de0bc24510eb1623ccd7718}{CountAsync\_ShouldInvokeOnNumberGeneratedForAllNumbers}}()}
+\DoxyCodeLine{\Hypertarget{_meliora_service_tests_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_meliora_service_tests_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Arrange}}
+\DoxyCodeLine{\Hypertarget{_meliora_service_tests_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ maxValue\ =\ 10;}
+\DoxyCodeLine{\Hypertarget{_meliora_service_tests_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ startFrom\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{_meliora_service_tests_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ var\ numbersGenerated\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_meliora_service_tests_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \ \ \ \ var\ melioraService\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_meliora_1_1_services_1_1_cookies_kristen_1_1_meliora_service}{MelioraService}}();}
+\DoxyCodeLine{\Hypertarget{_meliora_service_tests_8cs_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{_meliora_service_tests_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Act}}
+\DoxyCodeLine{\Hypertarget{_meliora_service_tests_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \ \ \ \ await\ melioraService.CountAsync(maxValue,\ startFrom,\ (\_,\ \_)\ =>}
+\DoxyCodeLine{\Hypertarget{_meliora_service_tests_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_meliora_service_tests_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ numbersGenerated++;}
+\DoxyCodeLine{\Hypertarget{_meliora_service_tests_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ \ \ \ \ \},\ CancellationToken.None);}
+\DoxyCodeLine{\Hypertarget{_meliora_service_tests_8cs_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{_meliora_service_tests_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Assert}}
+\DoxyCodeLine{\Hypertarget{_meliora_service_tests_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \ \ \ \ Assert.Equal(maxValue\ -\/\ startFrom\ +\ 1,\ numbersGenerated);}
+\DoxyCodeLine{\Hypertarget{_meliora_service_tests_8cs_source_l00047}00047\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_meliora_service_tests_8cs_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{_meliora_service_tests_8cs_source_l00053}00053\ \ \ \ \ \ \ \ \ [Fact]}
+\DoxyCodeLine{\Hypertarget{_meliora_service_tests_8cs_source_l00054}\mbox{\hyperlink{class_meliora_1_1_tests_1_1_meliora_service_tests_a78630c86b91767397139395076efec24}{00054}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ async\ Task\ \mbox{\hyperlink{class_meliora_1_1_tests_1_1_meliora_service_tests_a78630c86b91767397139395076efec24}{CountAsync\_ShouldStopCountingWhenCancellationRequested}}()}
+\DoxyCodeLine{\Hypertarget{_meliora_service_tests_8cs_source_l00055}00055\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_meliora_service_tests_8cs_source_l00056}00056\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Arrange}}
+\DoxyCodeLine{\Hypertarget{_meliora_service_tests_8cs_source_l00057}00057\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ maxValue\ =\ 10;}
+\DoxyCodeLine{\Hypertarget{_meliora_service_tests_8cs_source_l00058}00058\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ startFrom\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{_meliora_service_tests_8cs_source_l00059}00059\ \ \ \ \ \ \ \ \ \ \ \ \ var\ numbersGenerated\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_meliora_service_tests_8cs_source_l00060}00060\ \ \ \ \ \ \ \ \ \ \ \ \ var\ cancellationTokenSource\ =\ \textcolor{keyword}{new}\ CancellationTokenSource();}
+\DoxyCodeLine{\Hypertarget{_meliora_service_tests_8cs_source_l00061}00061\ \ \ \ \ \ \ \ \ \ \ \ \ var\ melioraService\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_meliora_1_1_services_1_1_cookies_kristen_1_1_meliora_service}{MelioraService}}();}
+\DoxyCodeLine{\Hypertarget{_meliora_service_tests_8cs_source_l00062}00062\ }
+\DoxyCodeLine{\Hypertarget{_meliora_service_tests_8cs_source_l00063}00063\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Act}}
+\DoxyCodeLine{\Hypertarget{_meliora_service_tests_8cs_source_l00064}00064\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{\Hypertarget{_meliora_service_tests_8cs_source_l00065}00065\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_meliora_service_tests_8cs_source_l00066}00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ countingTask\ =\ melioraService.CountAsync(maxValue,\ startFrom,\ (\_,\ number)\ =>}
+\DoxyCodeLine{\Hypertarget{_meliora_service_tests_8cs_source_l00067}00067\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_meliora_service_tests_8cs_source_l00068}00068\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ numbersGenerated++;}
+\DoxyCodeLine{\Hypertarget{_meliora_service_tests_8cs_source_l00069}00069\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (number\ ==\ 5)}
+\DoxyCodeLine{\Hypertarget{_meliora_service_tests_8cs_source_l00070}00070\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_meliora_service_tests_8cs_source_l00071}00071\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cancellationTokenSource.Cancel();}
+\DoxyCodeLine{\Hypertarget{_meliora_service_tests_8cs_source_l00072}00072\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_meliora_service_tests_8cs_source_l00073}00073\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \},\ cancellationTokenSource.Token);}
+\DoxyCodeLine{\Hypertarget{_meliora_service_tests_8cs_source_l00074}00074\ }
+\DoxyCodeLine{\Hypertarget{_meliora_service_tests_8cs_source_l00075}00075\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ await\ countingTask;}
+\DoxyCodeLine{\Hypertarget{_meliora_service_tests_8cs_source_l00076}00076\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_meliora_service_tests_8cs_source_l00077}00077\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (Exception\ e)}
+\DoxyCodeLine{\Hypertarget{_meliora_service_tests_8cs_source_l00078}00078\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_meliora_service_tests_8cs_source_l00079}00079\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Assert}}
+\DoxyCodeLine{\Hypertarget{_meliora_service_tests_8cs_source_l00080}00080\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Assert.Equal(5,\ numbersGenerated);}
+\DoxyCodeLine{\Hypertarget{_meliora_service_tests_8cs_source_l00081}00081\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Assert.IsType<TaskCanceledException>(e);}
+\DoxyCodeLine{\Hypertarget{_meliora_service_tests_8cs_source_l00082}00082\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_meliora_service_tests_8cs_source_l00083}00083\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_meliora_service_tests_8cs_source_l00084}00084\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_meliora_service_tests_8cs_source_l00085}00085\ \}}
+
+\end{DoxyCode}

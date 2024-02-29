@@ -1,0 +1,69 @@
+\chapter{R University}
+\hypertarget{md__r_e_a_d_m_e}{}\label{md__r_e_a_d_m_e}\index{R University@{R University}}
+\label{md__r_e_a_d_m_e_autotoc_md0}%
+\Hypertarget{md__r_e_a_d_m_e_autotoc_md0}%
+ \hypertarget{md__r_e_a_d_m_e_autotoc_md1}{}\doxysection{\texorpdfstring{About The Project}{About The Project}}\label{md__r_e_a_d_m_e_autotoc_md1}
+R University is an interactive web application that demonstrates a dynamic counting mechanism, showcasing the seamless integration of educational features with the exploration of mathematical concepts. Developed using Blazor technology and styled with Bootstrap, this application provides a responsive and engaging user experience.\hypertarget{md__r_e_a_d_m_e_autotoc_md2}{}\doxysubsection{\texorpdfstring{Features}{Features}}\label{md__r_e_a_d_m_e_autotoc_md2}
+
+\begin{DoxyItemize}
+\item {\bfseries{Dynamic Counting}}\+: Counts from 1 to a user-\/defined limit.
+\item {\bfseries{Special Labels}}\+: Marks multiples of 3 as "{}\+Nursing"{}, multiples of 7 as "{}\+Meliora"{}, and multiples of both 3 and 7 as "{}\+Nursing Meliora"{}.
+\item {\bfseries{Interactivity}}\+: Users can start, stop, and resume counting at any time.
+\item {\bfseries{Responsive Design}}\+: Optimized for a smooth experience across all devices.
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md3}{}\doxysection{\texorpdfstring{Getting Started}{Getting Started}}\label{md__r_e_a_d_m_e_autotoc_md3}
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.\hypertarget{md__r_e_a_d_m_e_autotoc_md4}{}\doxysubsection{\texorpdfstring{Prerequisites}{Prerequisites}}\label{md__r_e_a_d_m_e_autotoc_md4}
+
+\begin{DoxyItemize}
+\item \href{https://dotnet.microsoft.com/download}{\texttt{ .NET 8.\+0}} or later
+\item A modern web browser
+\item Docker and Docker Compose installed on your machine. If you don\textquotesingle{}t have them, follow the links below for installation\+:
+\begin{DoxyItemize}
+\item \href{https://docs.docker.com/get-docker/}{\texttt{ Install Docker}}
+\item \href{https://docs.docker.com/compose/install/}{\texttt{ Install Docker Compose}}
+\end{DoxyItemize}
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md5}{}\doxysubsection{\texorpdfstring{Installation}{Installation}}\label{md__r_e_a_d_m_e_autotoc_md5}
+
+\begin{DoxyEnumerate}
+\item Clone the repository 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{git\ clone\ https://github.com/KleberSyd/Meliora.git}
+
+\end{DoxyCode}
+
+\item Navigate to the project directory 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{cd\ Meliora}
+
+\end{DoxyCode}
+
+\item To build and start the application using Docker Compose, create a {\ttfamily docker-\/compose.\+yml} file in the project root with the following content\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{version:\ '3.8'}
+\DoxyCodeLine{services:}
+\DoxyCodeLine{\ \ webapp:}
+\DoxyCodeLine{\ \ \ \ build:\ .}
+\DoxyCodeLine{\ \ \ \ ports:}
+\DoxyCodeLine{\ \ \ \ \ \ -\/\ "{}80:80"{}}
+\DoxyCodeLine{\ \ \ \ environment:}
+\DoxyCodeLine{\ \ \ \ \ \ -\/\ ASPNETCORE\_ENVIRONMENT=Development}
+
+\end{DoxyCode}
+
+\item Run the application 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{docker-\/compose\ up\ -\/-\/build}
+
+\end{DoxyCode}
+
+
+This will build the Docker image of the application (if necessary) and start a container based on that image.
+\item Access the application in your browser at {\ttfamily \href{http://localhost}{\texttt{ http\+://localhost}}}.
+\end{DoxyEnumerate}\hypertarget{md__r_e_a_d_m_e_autotoc_md6}{}\doxysection{\texorpdfstring{Technical Exercises and Requirements}{Technical Exercises and Requirements}}\label{md__r_e_a_d_m_e_autotoc_md6}
+This project also aims to address a set of technical exercises proposed in the "{}\+SON Analyst Programmer Technical Quiz"{}, which includes creating a .NET solution, a business layer, a report page, SQL queries, and demonstrations of version control system usage. Each of these components plays a crucial role in assessing core competencies for the analyst/programmer position at the School of Nursing.\hypertarget{md__r_e_a_d_m_e_autotoc_md7}{}\doxysubsection{\texorpdfstring{.NET Solution (Meliora.\+sln)}{.NET Solution (Meliora.\+sln)}}\label{md__r_e_a_d_m_e_autotoc_md7}
+The project includes a .NET solution that counts from 1 to 50, applying specific rules for multiples of 3 and 7, as detailed in the exercise requirements.\hypertarget{md__r_e_a_d_m_e_autotoc_md8}{}\doxysubsection{\texorpdfstring{Business Layer}{Business Layer}}\label{md__r_e_a_d_m_e_autotoc_md8}
+A business layer was created to meet the needs of an entrepreneurial college student, providing functionalities to manage orders of cookies with various mix-\/ins.\hypertarget{md__r_e_a_d_m_e_autotoc_md9}{}\doxysubsection{\texorpdfstring{Report Page}{Report Page}}\label{md__r_e_a_d_m_e_autotoc_md9}
+A {\ttfamily Reports.\+aspx} page has been implemented to assist in order management and business planning, accessible only by the business owner.\hypertarget{md__r_e_a_d_m_e_autotoc_md10}{}\doxysubsection{\texorpdfstring{SQL Queries}{SQL Queries}}\label{md__r_e_a_d_m_e_autotoc_md10}
+SQL queries have been performed to analyze order data and customer preferences, using the Adventure\+Works2016 database for demonstration.\hypertarget{md__r_e_a_d_m_e_autotoc_md11}{}\doxysubsection{\texorpdfstring{Version Control}{Version Control}}\label{md__r_e_a_d_m_e_autotoc_md11}
+A brief demonstration on the version control system 

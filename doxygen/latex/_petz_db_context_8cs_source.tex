@@ -1,0 +1,81 @@
+\doxysection{Petz\+Db\+Context.\+cs}
+\hypertarget{_petz_db_context_8cs_source}{}\label{_petz_db_context_8cs_source}\index{Meliora.Repository/Context/PetzDbContext.cs@{Meliora.Repository/Context/PetzDbContext.cs}}
+\mbox{\hyperlink{_petz_db_context_8cs}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_petz_db_context_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_meliora_1_1_domain_1_1_models_1_1_petz}{Meliora.Domain.Models.Petz}};}
+\DoxyCodeLine{\Hypertarget{_petz_db_context_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }Microsoft.EntityFrameworkCore;}
+\DoxyCodeLine{\Hypertarget{_petz_db_context_8cs_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{_petz_db_context_8cs_source_l00004}00004\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_meliora_1_1_repository_1_1_context}{Meliora.Repository.Context}};}
+\DoxyCodeLine{\Hypertarget{_petz_db_context_8cs_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{_petz_db_context_8cs_source_l00006}\mbox{\hyperlink{namespace_meliora_1_1_repository_1_1_context_a9fe52c25ac48d37da8d79a4ba1c43cb8}{00006}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{namespace_meliora_1_1_repository_1_1_context_a9fe52c25ac48d37da8d79a4ba1c43cb8}{PetzDbContext}}(DbContextOptions<\mbox{\hyperlink{namespace_meliora_1_1_repository_1_1_context_a9fe52c25ac48d37da8d79a4ba1c43cb8}{PetzDbContext}}>\ options)\ :\ DbContext(options)}
+\DoxyCodeLine{\Hypertarget{_petz_db_context_8cs_source_l00007}00007\ \{}
+\DoxyCodeLine{\Hypertarget{_petz_db_context_8cs_source_l00008}00008\ \ \ \ \ \textcolor{keyword}{public}\ required\ DbSet<Person>\ People\ \{\ \textcolor{keyword}{get};\ \textcolor{keyword}{set};\ \}}
+\DoxyCodeLine{\Hypertarget{_petz_db_context_8cs_source_l00009}00009\ \ \ \ \ \textcolor{keyword}{public}\ required\ DbSet<Pet>\ Pets\ \{\ \textcolor{keyword}{get};\ \textcolor{keyword}{set};\ \}}
+\DoxyCodeLine{\Hypertarget{_petz_db_context_8cs_source_l00010}00010\ \ \ \ \ \textcolor{keyword}{public}\ required\ DbSet<PersonPet>\ PersonPets\ \{\ \textcolor{keyword}{get};\ \textcolor{keyword}{set};\ \}}
+\DoxyCodeLine{\Hypertarget{_petz_db_context_8cs_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{_petz_db_context_8cs_source_l00012}00012\ \ \ \ \ \textcolor{keyword}{protected}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ OnModelCreating(ModelBuilder\ modelBuilder)}
+\DoxyCodeLine{\Hypertarget{_petz_db_context_8cs_source_l00013}00013\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_petz_db_context_8cs_source_l00014}00014\ \ \ \ \ \ \ \ \ base.OnModelCreating(modelBuilder);}
+\DoxyCodeLine{\Hypertarget{_petz_db_context_8cs_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{_petz_db_context_8cs_source_l00016}00016\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Configuring\ Many-\/to-\/Many\ relationship\ between\ People\ and\ Pets}}
+\DoxyCodeLine{\Hypertarget{_petz_db_context_8cs_source_l00017}00017\ \ \ \ \ \ \ \ \ modelBuilder.Entity<\mbox{\hyperlink{class_meliora_1_1_domain_1_1_models_1_1_petz_1_1_person}{Person}}>()}
+\DoxyCodeLine{\Hypertarget{_petz_db_context_8cs_source_l00018}00018\ \ \ \ \ \ \ \ \ \ \ \ \ .HasMany(p\ =>\ p.Pets)}
+\DoxyCodeLine{\Hypertarget{_petz_db_context_8cs_source_l00019}00019\ \ \ \ \ \ \ \ \ \ \ \ \ .WithMany(p\ =>\ p.People)}
+\DoxyCodeLine{\Hypertarget{_petz_db_context_8cs_source_l00020}00020\ \ \ \ \ \ \ \ \ \ \ \ \ .UsingEntity<\mbox{\hyperlink{class_meliora_1_1_domain_1_1_models_1_1_petz_1_1_person_pet}{PersonPet}}>(}
+\DoxyCodeLine{\Hypertarget{_petz_db_context_8cs_source_l00021}00021\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ j\ =>\ j}
+\DoxyCodeLine{\Hypertarget{_petz_db_context_8cs_source_l00022}00022\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .HasOne(pp\ =>\ pp.Pet)}
+\DoxyCodeLine{\Hypertarget{_petz_db_context_8cs_source_l00023}00023\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .WithMany()}
+\DoxyCodeLine{\Hypertarget{_petz_db_context_8cs_source_l00024}00024\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .HasForeignKey(pp\ =>\ pp.PetId)}
+\DoxyCodeLine{\Hypertarget{_petz_db_context_8cs_source_l00025}00025\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .HasConstraintName(\textcolor{stringliteral}{"{}FK\_PersonPets\_Pets"{}}),}
+\DoxyCodeLine{\Hypertarget{_petz_db_context_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ j\ =>\ j}
+\DoxyCodeLine{\Hypertarget{_petz_db_context_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .HasOne(pp\ =>\ pp.Person)}
+\DoxyCodeLine{\Hypertarget{_petz_db_context_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .WithMany()}
+\DoxyCodeLine{\Hypertarget{_petz_db_context_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .HasForeignKey(pp\ =>\ pp.PersonId)}
+\DoxyCodeLine{\Hypertarget{_petz_db_context_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .HasConstraintName(\textcolor{stringliteral}{"{}FK\_PersonPets\_People"{}}),}
+\DoxyCodeLine{\Hypertarget{_petz_db_context_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ j\ =>}
+\DoxyCodeLine{\Hypertarget{_petz_db_context_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_petz_db_context_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ j.ToTable(\textcolor{stringliteral}{"{}PersonPet"{}});}
+\DoxyCodeLine{\Hypertarget{_petz_db_context_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ j.Property(pp\ =>\ pp.PersonId).HasColumnName(\textcolor{stringliteral}{"{}person\_id"{}});}
+\DoxyCodeLine{\Hypertarget{_petz_db_context_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ j.Property(pp\ =>\ pp.PetId).HasColumnName(\textcolor{stringliteral}{"{}pet\_id"{}});}
+\DoxyCodeLine{\Hypertarget{_petz_db_context_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ j.HasKey(pp\ =>\ \textcolor{keyword}{new}\ \{\ pp.PersonId,\ pp.PetId\ \});}
+\DoxyCodeLine{\Hypertarget{_petz_db_context_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_petz_db_context_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{\Hypertarget{_petz_db_context_8cs_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{_petz_db_context_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ People\ Entity}}
+\DoxyCodeLine{\Hypertarget{_petz_db_context_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ modelBuilder.Entity<\mbox{\hyperlink{class_meliora_1_1_domain_1_1_models_1_1_petz_1_1_person}{Person}}>()}
+\DoxyCodeLine{\Hypertarget{_petz_db_context_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ \ \ \ \ .ToTable(\textcolor{stringliteral}{"{}People"{}})}
+\DoxyCodeLine{\Hypertarget{_petz_db_context_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ \ \ \ \ .HasKey(p\ =>\ p.Id);}
+\DoxyCodeLine{\Hypertarget{_petz_db_context_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ modelBuilder.Entity<\mbox{\hyperlink{class_meliora_1_1_domain_1_1_models_1_1_petz_1_1_person}{Person}}>()}
+\DoxyCodeLine{\Hypertarget{_petz_db_context_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \ \ \ \ .Property(p\ =>\ p.FirstName)}
+\DoxyCodeLine{\Hypertarget{_petz_db_context_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \ \ \ \ .IsRequired()}
+\DoxyCodeLine{\Hypertarget{_petz_db_context_8cs_source_l00047}00047\ \ \ \ \ \ \ \ \ \ \ \ \ .HasMaxLength(255)}
+\DoxyCodeLine{\Hypertarget{_petz_db_context_8cs_source_l00048}00048\ \ \ \ \ \ \ \ \ \ \ \ \ .HasColumnName(\textcolor{stringliteral}{"{}first\_name"{}});}
+\DoxyCodeLine{\Hypertarget{_petz_db_context_8cs_source_l00049}00049\ \ \ \ \ \ \ \ \ modelBuilder.Entity<\mbox{\hyperlink{class_meliora_1_1_domain_1_1_models_1_1_petz_1_1_person}{Person}}>()}
+\DoxyCodeLine{\Hypertarget{_petz_db_context_8cs_source_l00050}00050\ \ \ \ \ \ \ \ \ \ \ \ \ .Property(p\ =>\ p.LastName)}
+\DoxyCodeLine{\Hypertarget{_petz_db_context_8cs_source_l00051}00051\ \ \ \ \ \ \ \ \ \ \ \ \ .IsRequired()}
+\DoxyCodeLine{\Hypertarget{_petz_db_context_8cs_source_l00052}00052\ \ \ \ \ \ \ \ \ \ \ \ \ .HasMaxLength(255)}
+\DoxyCodeLine{\Hypertarget{_petz_db_context_8cs_source_l00053}00053\ \ \ \ \ \ \ \ \ \ \ \ \ .HasColumnName(\textcolor{stringliteral}{"{}last\_name"{}});}
+\DoxyCodeLine{\Hypertarget{_petz_db_context_8cs_source_l00054}00054\ \ \ \ \ \ \ \ \ modelBuilder.Entity<\mbox{\hyperlink{class_meliora_1_1_domain_1_1_models_1_1_petz_1_1_person}{Person}}>()}
+\DoxyCodeLine{\Hypertarget{_petz_db_context_8cs_source_l00055}00055\ \ \ \ \ \ \ \ \ \ \ \ \ .HasMany(p\ =>\ p.Pets)}
+\DoxyCodeLine{\Hypertarget{_petz_db_context_8cs_source_l00056}00056\ \ \ \ \ \ \ \ \ \ \ \ \ .WithMany(p\ =>\ p.People)}
+\DoxyCodeLine{\Hypertarget{_petz_db_context_8cs_source_l00057}00057\ \ \ \ \ \ \ \ \ \ \ \ \ .UsingEntity(j\ =>\ j.ToTable(\textcolor{stringliteral}{"{}PersonPet"{}}));}
+\DoxyCodeLine{\Hypertarget{_petz_db_context_8cs_source_l00058}00058\ }
+\DoxyCodeLine{\Hypertarget{_petz_db_context_8cs_source_l00059}00059\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Pets\ Entity}}
+\DoxyCodeLine{\Hypertarget{_petz_db_context_8cs_source_l00060}00060\ \ \ \ \ \ \ \ \ modelBuilder.Entity<\mbox{\hyperlink{class_meliora_1_1_domain_1_1_models_1_1_petz_1_1_pet}{Pet}}>()}
+\DoxyCodeLine{\Hypertarget{_petz_db_context_8cs_source_l00061}00061\ \ \ \ \ \ \ \ \ \ \ \ \ .ToTable(\textcolor{stringliteral}{"{}Pets"{}})}
+\DoxyCodeLine{\Hypertarget{_petz_db_context_8cs_source_l00062}00062\ \ \ \ \ \ \ \ \ \ \ \ \ .HasKey(p\ =>\ p.Id);}
+\DoxyCodeLine{\Hypertarget{_petz_db_context_8cs_source_l00063}00063\ \ \ \ \ \ \ \ \ modelBuilder.Entity<\mbox{\hyperlink{class_meliora_1_1_domain_1_1_models_1_1_petz_1_1_pet}{Pet}}>()}
+\DoxyCodeLine{\Hypertarget{_petz_db_context_8cs_source_l00064}00064\ \ \ \ \ \ \ \ \ \ \ \ \ .Property(p\ =>\ p.Name)}
+\DoxyCodeLine{\Hypertarget{_petz_db_context_8cs_source_l00065}00065\ \ \ \ \ \ \ \ \ \ \ \ \ .IsRequired()}
+\DoxyCodeLine{\Hypertarget{_petz_db_context_8cs_source_l00066}00066\ \ \ \ \ \ \ \ \ \ \ \ \ .HasMaxLength(255);}
+\DoxyCodeLine{\Hypertarget{_petz_db_context_8cs_source_l00067}00067\ \ \ \ \ \ \ \ \ modelBuilder.Entity<\mbox{\hyperlink{class_meliora_1_1_domain_1_1_models_1_1_petz_1_1_pet}{Pet}}>()}
+\DoxyCodeLine{\Hypertarget{_petz_db_context_8cs_source_l00068}00068\ \ \ \ \ \ \ \ \ \ \ \ \ .Property(p\ =>\ p.Breed)}
+\DoxyCodeLine{\Hypertarget{_petz_db_context_8cs_source_l00069}00069\ \ \ \ \ \ \ \ \ \ \ \ \ .IsRequired()}
+\DoxyCodeLine{\Hypertarget{_petz_db_context_8cs_source_l00070}00070\ \ \ \ \ \ \ \ \ \ \ \ \ .HasMaxLength(255);}
+\DoxyCodeLine{\Hypertarget{_petz_db_context_8cs_source_l00071}00071\ \ \ \ \ \ \ \ \ modelBuilder.Entity<\mbox{\hyperlink{class_meliora_1_1_domain_1_1_models_1_1_petz_1_1_pet}{Pet}}>()}
+\DoxyCodeLine{\Hypertarget{_petz_db_context_8cs_source_l00072}00072\ \ \ \ \ \ \ \ \ \ \ \ \ .Property(p\ =>\ p.Dead)}
+\DoxyCodeLine{\Hypertarget{_petz_db_context_8cs_source_l00073}00073\ \ \ \ \ \ \ \ \ \ \ \ \ .IsRequired();}
+\DoxyCodeLine{\Hypertarget{_petz_db_context_8cs_source_l00074}00074\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_petz_db_context_8cs_source_l00075}00075\ \}}
+
+\end{DoxyCode}

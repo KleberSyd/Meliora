@@ -1,0 +1,25 @@
+\doxysection{Program.\+cs}
+\hypertarget{_meliora_8_client_2_program_8cs_source}{}\label{_meliora_8_client_2_program_8cs_source}\index{Meliora.Client/Program.cs@{Meliora.Client/Program.cs}}
+\mbox{\hyperlink{_meliora_8_client_2_program_8cs}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_meliora_8_client_2_program_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_meliora_1_1_services_1_1_cookies_kristen}{Meliora.Services.CookiesKristen}};}
+\DoxyCodeLine{\Hypertarget{_meliora_8_client_2_program_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_meliora_1_1_services_1_1_cookies_kristen_1_1_interfaces}{Meliora.Services.CookiesKristen.Interfaces}};}
+\DoxyCodeLine{\Hypertarget{_meliora_8_client_2_program_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_meliora_1_1_services_1_1_petz}{Meliora.Services.Petz}};}
+\DoxyCodeLine{\Hypertarget{_meliora_8_client_2_program_8cs_source_l00004}00004\ \textcolor{keyword}{using\ }Microsoft.AspNetCore.Components.WebAssembly.Hosting;}
+\DoxyCodeLine{\Hypertarget{_meliora_8_client_2_program_8cs_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{_meliora_8_client_2_program_8cs_source_l00006}\mbox{\hyperlink{_meliora_8_client_2_program_8cs_a2f78352277081c620fd4cf92a5ce15e5}{00006}}\ var\ \mbox{\hyperlink{_meliora_8_client_2_program_8cs_a2f78352277081c620fd4cf92a5ce15e5}{builder}}\ =\ WebAssemblyHostBuilder.CreateDefault(args);}
+\DoxyCodeLine{\Hypertarget{_meliora_8_client_2_program_8cs_source_l00007}00007\ \textcolor{comment}{//\ Add\ services\ to\ the\ container.}}
+\DoxyCodeLine{\Hypertarget{_meliora_8_client_2_program_8cs_source_l00008}00008\ \textcolor{comment}{//Petz\ Services}}
+\DoxyCodeLine{\Hypertarget{_meliora_8_client_2_program_8cs_source_l00009}\mbox{\hyperlink{_meliora_8_client_2_program_8cs_a4e29b5da6ded118a467176152c966b08}{00009}}\ \mbox{\hyperlink{_meliora_8_client_2_program_8cs_a2f78352277081c620fd4cf92a5ce15e5}{builder}}.Services.AddScoped<\mbox{\hyperlink{interface_meliora_1_1_services_1_1_petz_1_1_i_petz_service}{IPetzService}},\ PetzService>();}
+\DoxyCodeLine{\Hypertarget{_meliora_8_client_2_program_8cs_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{_meliora_8_client_2_program_8cs_source_l00011}00011\ \textcolor{comment}{//\ Cookie\ Kristen\ Services}}
+\DoxyCodeLine{\Hypertarget{_meliora_8_client_2_program_8cs_source_l00012}\mbox{\hyperlink{_meliora_8_client_2_program_8cs_adc2f071a49e75cb355deed991e12032f}{00012}}\ \mbox{\hyperlink{_meliora_8_client_2_program_8cs_a2f78352277081c620fd4cf92a5ce15e5}{builder}}.Services.AddScoped<\mbox{\hyperlink{interface_meliora_1_1_services_1_1_cookies_kristen_1_1_interfaces_1_1_i_meliora_service}{IMelioraService}},\ \mbox{\hyperlink{class_meliora_1_1_services_1_1_cookies_kristen_1_1_meliora_service}{MelioraService}}>();}
+\DoxyCodeLine{\Hypertarget{_meliora_8_client_2_program_8cs_source_l00013}\mbox{\hyperlink{_meliora_8_client_2_program_8cs_a71b218e914b4d7c32e4222ea867190d1}{00013}}\ \mbox{\hyperlink{_meliora_8_client_2_program_8cs_a2f78352277081c620fd4cf92a5ce15e5}{builder}}.Services.AddScoped<\mbox{\hyperlink{interface_meliora_1_1_services_1_1_cookies_kristen_1_1_interfaces_1_1_i_mail_hogl_service}{IMailHoglService}},\ \mbox{\hyperlink{class_meliora_1_1_services_1_1_cookies_kristen_1_1_mail_hog_service}{MailHogService}}>();}
+\DoxyCodeLine{\Hypertarget{_meliora_8_client_2_program_8cs_source_l00014}00014\ }
+\DoxyCodeLine{\Hypertarget{_meliora_8_client_2_program_8cs_source_l00015}\mbox{\hyperlink{_meliora_8_client_2_program_8cs_a36ffc1f617c5ab9141e06616d2667277}{00015}}\ \mbox{\hyperlink{_meliora_8_client_2_program_8cs_a2f78352277081c620fd4cf92a5ce15e5}{builder}}.Services.AddScoped<\mbox{\hyperlink{interface_meliora_1_1_services_1_1_cookies_kristen_1_1_interfaces_1_1_i_order_service}{IOrderService}},\ OrderService>();}
+\DoxyCodeLine{\Hypertarget{_meliora_8_client_2_program_8cs_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{_meliora_8_client_2_program_8cs_source_l00017}\mbox{\hyperlink{_meliora_8_client_2_program_8cs_a02691799bfcd5282a622e5c0617137f6}{00017}}\ \mbox{\hyperlink{_meliora_8_client_2_program_8cs_a2f78352277081c620fd4cf92a5ce15e5}{builder}}.Services.AddSingleton<\mbox{\hyperlink{interface_meliora_1_1_services_1_1_cookies_kristen_1_1_interfaces_1_1_i_mail_notification_service}{IMailNotificationService}}>(\textcolor{keyword}{new}\ \mbox{\hyperlink{class_meliora_1_1_services_1_1_cookies_kristen_1_1_mail_notification_service}{MailNotificationService}}());}
+\DoxyCodeLine{\Hypertarget{_meliora_8_client_2_program_8cs_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{_meliora_8_client_2_program_8cs_source_l00019}\mbox{\hyperlink{_meliora_8_client_2_program_8cs_a103eab9352a5901779f62f6c98b53f7b}{00019}}\ await\ \mbox{\hyperlink{_meliora_8_client_2_program_8cs_a2f78352277081c620fd4cf92a5ce15e5}{builder}}.Build().RunAsync();}
+
+\end{DoxyCode}

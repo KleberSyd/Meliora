@@ -1,0 +1,68 @@
+\doxysection{Petz\+Service.\+cs}
+\hypertarget{_petz_service_8cs_source}{}\label{_petz_service_8cs_source}\index{Meliora.Services/Petz/PetzService.cs@{Meliora.Services/Petz/PetzService.cs}}
+\mbox{\hyperlink{_petz_service_8cs}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_petz_service_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_meliora_1_1_repository_1_1_context}{Meliora.Repository.Context}};}
+\DoxyCodeLine{\Hypertarget{_petz_service_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_meliora_1_1_services_1_1_petz_1_1_dto}{Meliora.Services.Petz.Dto}};}
+\DoxyCodeLine{\Hypertarget{_petz_service_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }Microsoft.EntityFrameworkCore;}
+\DoxyCodeLine{\Hypertarget{_petz_service_8cs_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{_petz_service_8cs_source_l00005}00005\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_meliora_1_1_services_1_1_petz}{Meliora.Services.Petz}};}
+\DoxyCodeLine{\Hypertarget{_petz_service_8cs_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{_petz_service_8cs_source_l00010}00010\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }PetzService(\mbox{\hyperlink{namespace_meliora_1_1_repository_1_1_context_a9fe52c25ac48d37da8d79a4ba1c43cb8}{PetzDbContext}}\ context)\ :\ \mbox{\hyperlink{interface_meliora_1_1_services_1_1_petz_1_1_i_petz_service}{IPetzService}}}
+\DoxyCodeLine{\Hypertarget{_petz_service_8cs_source_l00011}00011\ \{}
+\DoxyCodeLine{\Hypertarget{_petz_service_8cs_source_l00016}00016\ \ \ \ \ \textcolor{keyword}{public}\ async\ Task<List<PetDto>?>\ GetPetsByRawSqlAsync()}
+\DoxyCodeLine{\Hypertarget{_petz_service_8cs_source_l00017}00017\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_petz_service_8cs_source_l00018}00018\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\ sqlQuery\ =\ \textcolor{stringliteral}{"{}"{}}\textcolor{stringliteral}{"{}}}
+\DoxyCodeLine{\Hypertarget{_petz_service_8cs_source_l00019}00019\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{\Hypertarget{_petz_service_8cs_source_l00020}00020\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ SELECT\ TOP\ (1000)\ [Petz].[dbo].[Pets].[id]}}
+\DoxyCodeLine{\Hypertarget{_petz_service_8cs_source_l00021}00021\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,[Petz].[dbo].[Pets].[name]}}
+\DoxyCodeLine{\Hypertarget{_petz_service_8cs_source_l00022}00022\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,[Petz].[dbo].[Pets].[breed]}}
+\DoxyCodeLine{\Hypertarget{_petz_service_8cs_source_l00023}00023\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,[Petz].[dbo].[Pets].[age]}}
+\DoxyCodeLine{\Hypertarget{_petz_service_8cs_source_l00024}00024\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,[Petz].[dbo].[Pets].[dead]}}
+\DoxyCodeLine{\Hypertarget{_petz_service_8cs_source_l00025}00025\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ FROM\ [Petz].[dbo].[Pets]}}
+\DoxyCodeLine{\Hypertarget{_petz_service_8cs_source_l00026}00026\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ JOIN\ [Petz].[dbo].[PersonPet]\ ON\ [Petz].[dbo].[PersonPet].[pet\_id]\ =\ [Petz].[dbo].[Pets].[id]}}
+\DoxyCodeLine{\Hypertarget{_petz_service_8cs_source_l00027}00027\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ JOIN\ [Petz].[dbo].[People]\ ON\ [Petz].[dbo].[PersonPet].[person\_id]\ =\ [Petz].[dbo].[People].[id]}}
+\DoxyCodeLine{\Hypertarget{_petz_service_8cs_source_l00028}00028\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ WHERE\ [Petz].[dbo].[Pets].[dead]\ =\ 0\ and\ [Petz].[dbo].[People].[age]\ >\ 50}}
+\DoxyCodeLine{\Hypertarget{_petz_service_8cs_source_l00029}00029\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ORDER\ BY\ [Petz].[dbo].[People].[first\_name]}}
+\DoxyCodeLine{\Hypertarget{_petz_service_8cs_source_l00030}00030\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}}\textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{\Hypertarget{_petz_service_8cs_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{_petz_service_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ await\ context.Pets.FromSqlRaw(sqlQuery).Select(p\ =>\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_meliora_1_1_services_1_1_petz_1_1_dto_1_1_pet_dto}{PetDto}}}
+\DoxyCodeLine{\Hypertarget{_petz_service_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_petz_service_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ \ \ \ \ Name\ =\ p.\mbox{\hyperlink{class_meliora_1_1_services_1_1_petz_1_1_dto_1_1_pet_dto_a8c64735206b0c936a78ef47a76ab9743}{Name}},}
+\DoxyCodeLine{\Hypertarget{_petz_service_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \ \ \ \ Breed\ =\ p.Breed,}
+\DoxyCodeLine{\Hypertarget{_petz_service_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ Age\ =\ p.Age}
+\DoxyCodeLine{\Hypertarget{_petz_service_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \}).ToListAsync();}
+\DoxyCodeLine{\Hypertarget{_petz_service_8cs_source_l00038}00038\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_petz_service_8cs_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{_petz_service_8cs_source_l00044}00044\ \ \ \ \ \textcolor{keyword}{public}\ async\ Task<List<PetDto>>\ GetPetsByLambdaAsync()}
+\DoxyCodeLine{\Hypertarget{_petz_service_8cs_source_l00045}00045\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_petz_service_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ await\ (from\ pet\ in\ context.Pets}
+\DoxyCodeLine{\Hypertarget{_petz_service_8cs_source_l00047}00047\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ join\ personPet\ in\ context.PersonPets\ on\ pet.Id\ equals\ personPet.PetId}
+\DoxyCodeLine{\Hypertarget{_petz_service_8cs_source_l00048}00048\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ join\ person\ in\ context.People\ on\ personPet.PersonId\ equals\ person.Id}
+\DoxyCodeLine{\Hypertarget{_petz_service_8cs_source_l00049}00049\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ where\ !pet.Dead\ \&\&\ person.Age\ >\ 50}
+\DoxyCodeLine{\Hypertarget{_petz_service_8cs_source_l00050}00050\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ orderby\ person.FirstName}
+\DoxyCodeLine{\Hypertarget{_petz_service_8cs_source_l00051}00051\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ select\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_meliora_1_1_services_1_1_petz_1_1_dto_1_1_pet_dto}{PetDto}}}
+\DoxyCodeLine{\Hypertarget{_petz_service_8cs_source_l00052}00052\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_petz_service_8cs_source_l00053}00053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Name\ =\ pet.Name,}
+\DoxyCodeLine{\Hypertarget{_petz_service_8cs_source_l00054}00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Breed\ =\ pet.Breed,}
+\DoxyCodeLine{\Hypertarget{_petz_service_8cs_source_l00055}00055\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Age\ =\ pet.Age}
+\DoxyCodeLine{\Hypertarget{_petz_service_8cs_source_l00056}00056\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}).ToListAsync();}
+\DoxyCodeLine{\Hypertarget{_petz_service_8cs_source_l00057}00057\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_petz_service_8cs_source_l00058}00058\ }
+\DoxyCodeLine{\Hypertarget{_petz_service_8cs_source_l00063}00063\ \ \ \ \ \textcolor{keyword}{public}\ async\ Task<List<BreedCountDto>>\ GetBreedCountsAsync()}
+\DoxyCodeLine{\Hypertarget{_petz_service_8cs_source_l00064}00064\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_petz_service_8cs_source_l00065}00065\ \ \ \ \ \ \ \ \ var\ breedCounts\ =\ await\ context.Pets}
+\DoxyCodeLine{\Hypertarget{_petz_service_8cs_source_l00066}00066\ \ \ \ \ \ \ \ \ \ \ \ \ .GroupBy(p\ =>\ p.Breed)}
+\DoxyCodeLine{\Hypertarget{_petz_service_8cs_source_l00067}00067\ \ \ \ \ \ \ \ \ \ \ \ \ .Select(g\ =>\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_meliora_1_1_services_1_1_petz_1_1_dto_1_1_breed_count_dto}{BreedCountDto}}}
+\DoxyCodeLine{\Hypertarget{_petz_service_8cs_source_l00068}00068\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_petz_service_8cs_source_l00069}00069\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Breed\ =\ g.Key,}
+\DoxyCodeLine{\Hypertarget{_petz_service_8cs_source_l00070}00070\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Count\ =\ g.\mbox{\hyperlink{class_meliora_1_1_services_1_1_petz_1_1_dto_1_1_breed_count_dto_a06f025b13b3e3bb476946745063b471f}{Count}}()}
+\DoxyCodeLine{\Hypertarget{_petz_service_8cs_source_l00071}00071\ \ \ \ \ \ \ \ \ \ \ \ \ \})}
+\DoxyCodeLine{\Hypertarget{_petz_service_8cs_source_l00072}00072\ \ \ \ \ \ \ \ \ \ \ \ \ .OrderByDescending(bc\ =>\ bc.Count)}
+\DoxyCodeLine{\Hypertarget{_petz_service_8cs_source_l00073}00073\ \ \ \ \ \ \ \ \ \ \ \ \ .ToListAsync();}
+\DoxyCodeLine{\Hypertarget{_petz_service_8cs_source_l00074}00074\ }
+\DoxyCodeLine{\Hypertarget{_petz_service_8cs_source_l00075}00075\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ breedCounts;}
+\DoxyCodeLine{\Hypertarget{_petz_service_8cs_source_l00076}00076\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_petz_service_8cs_source_l00077}00077\ \}}
+
+\end{DoxyCode}

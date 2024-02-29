@@ -1,0 +1,5 @@
+var searchData=
+[
+  ['id_0',['Id',['../class_meliora_1_1_domain_1_1_models_1_1_cookies_kristen_1_1_customer.html#aaa9bb350e914d23120292318ad308242',1,'Meliora.Domain.Models.CookiesKristen.Customer.Id'],['../class_meliora_1_1_domain_1_1_models_1_1_cookies_kristen_1_1_mixin.html#aa44b92c34c7a1920e749548c9710967a',1,'Meliora.Domain.Models.CookiesKristen.Mixin.Id'],['../class_meliora_1_1_domain_1_1_models_1_1_cookies_kristen_1_1_order.html#a20017b821da79fde438464e6daf1e383',1,'Meliora.Domain.Models.CookiesKristen.Order.Id'],['../class_meliora_1_1_domain_1_1_models_1_1_petz_1_1_person.html#aceaf24d4c61eb2d7da67d8020cc8f6b9',1,'Meliora.Domain.Models.Petz.Person.Id'],['../class_meliora_1_1_domain_1_1_models_1_1_petz_1_1_pet.html#a68bd8c6a5f2f5c5b4663e8f7e8ec2ffa',1,'Meliora.Domain.Models.Petz.Pet.Id']]],
+  ['items_1',['items',['../class_meliora_1_1_services_1_1_cookies_kristen_1_1_mail_hog_dependencies_1_1_mailhog_response.html#a65a8ddabd4bc71dc192daeb77c532536',1,'Meliora::Services::CookiesKristen::MailHogDependencies::MailhogResponse']]]
+];

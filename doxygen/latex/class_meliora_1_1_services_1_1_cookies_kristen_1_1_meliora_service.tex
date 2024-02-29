@@ -1,0 +1,85 @@
+\doxysection{Meliora.\+Services.\+Cookies\+Kristen.\+Meliora\+Service Class Reference}
+\hypertarget{class_meliora_1_1_services_1_1_cookies_kristen_1_1_meliora_service}{}\label{class_meliora_1_1_services_1_1_cookies_kristen_1_1_meliora_service}\index{Meliora.Services.CookiesKristen.MelioraService@{Meliora.Services.CookiesKristen.MelioraService}}
+Inheritance diagram for Meliora.\+Services.\+Cookies\+Kristen.\+Meliora\+Service\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_meliora_1_1_services_1_1_cookies_kristen_1_1_meliora_service}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+async Task$<$ string $>$ \mbox{\hyperlink{class_meliora_1_1_services_1_1_cookies_kristen_1_1_meliora_service_aedd772a4e4fa3892904fe99e14f054dc}{Get\+Divisibility\+String}} (int value)
+\begin{DoxyCompactList}\small\item\em Gets the divisibility string for the given value. \end{DoxyCompactList}\item 
+async Task \mbox{\hyperlink{class_meliora_1_1_services_1_1_cookies_kristen_1_1_meliora_service_a8e4b4533d72698d55e1cec5fd7a2ff5f}{Count\+Async}} (int max\+Value, int start\+From, Action$<$ string, int $>$ on\+Number\+Generated, Cancellation\+Token cancellation\+Token)
+\begin{DoxyCompactList}\small\item\em Counts from the start\+From value up to the max\+Value, invoking the on\+Number\+Generated action for each number generated. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{_meliora_service_8cs_source_l00006}{6}} of file \mbox{\hyperlink{_meliora_service_8cs_source}{Meliora\+Service.\+cs}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_meliora_1_1_services_1_1_cookies_kristen_1_1_meliora_service_a8e4b4533d72698d55e1cec5fd7a2ff5f}\label{class_meliora_1_1_services_1_1_cookies_kristen_1_1_meliora_service_a8e4b4533d72698d55e1cec5fd7a2ff5f} 
+\index{Meliora.Services.CookiesKristen.MelioraService@{Meliora.Services.CookiesKristen.MelioraService}!CountAsync@{CountAsync}}
+\index{CountAsync@{CountAsync}!Meliora.Services.CookiesKristen.MelioraService@{Meliora.Services.CookiesKristen.MelioraService}}
+\doxysubsubsection{\texorpdfstring{CountAsync()}{CountAsync()}}
+{\footnotesize\ttfamily async Task Meliora.\+Services.\+Cookies\+Kristen.\+Meliora\+Service.\+Count\+Async (\begin{DoxyParamCaption}\item[{int}]{max\+Value,  }\item[{int}]{start\+From,  }\item[{Action$<$ string, int $>$}]{on\+Number\+Generated,  }\item[{Cancellation\+Token}]{cancellation\+Token }\end{DoxyParamCaption})}
+
+
+
+Counts from the start\+From value up to the max\+Value, invoking the on\+Number\+Generated action for each number generated. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em max\+Value} & The maximum value to count up to.\\
+\hline
+{\em start\+From} & The starting value.\\
+\hline
+{\em on\+Number\+Generated} & The action to invoke for each number generated.\\
+\hline
+{\em cancellation\+Token} & The cancellation token to stop the counting process.\\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{interface_meliora_1_1_services_1_1_cookies_kristen_1_1_interfaces_1_1_i_meliora_service_aba171f483823b1247016af18a9a51736}{Meliora.\+Services.\+Cookies\+Kristen.\+Interfaces.\+IMeliora\+Service}}.
+
+
+
+Definition at line \mbox{\hyperlink{_meliora_service_8cs_source_l00025}{25}} of file \mbox{\hyperlink{_meliora_service_8cs_source}{Meliora\+Service.\+cs}}.
+
+\Hypertarget{class_meliora_1_1_services_1_1_cookies_kristen_1_1_meliora_service_aedd772a4e4fa3892904fe99e14f054dc}\label{class_meliora_1_1_services_1_1_cookies_kristen_1_1_meliora_service_aedd772a4e4fa3892904fe99e14f054dc} 
+\index{Meliora.Services.CookiesKristen.MelioraService@{Meliora.Services.CookiesKristen.MelioraService}!GetDivisibilityString@{GetDivisibilityString}}
+\index{GetDivisibilityString@{GetDivisibilityString}!Meliora.Services.CookiesKristen.MelioraService@{Meliora.Services.CookiesKristen.MelioraService}}
+\doxysubsubsection{\texorpdfstring{GetDivisibilityString()}{GetDivisibilityString()}}
+{\footnotesize\ttfamily async Task$<$ string $>$ Meliora.\+Services.\+Cookies\+Kristen.\+Meliora\+Service.\+Get\+Divisibility\+String (\begin{DoxyParamCaption}\item[{int}]{value }\end{DoxyParamCaption})}
+
+
+
+Gets the divisibility string for the given value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & The value to check divisibility for.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The divisibility string.
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{interface_meliora_1_1_services_1_1_cookies_kristen_1_1_interfaces_1_1_i_meliora_service_a9da10fe92e5e7f47c025e6cb1ce88994}{Meliora.\+Services.\+Cookies\+Kristen.\+Interfaces.\+IMeliora\+Service}}.
+
+
+
+Definition at line \mbox{\hyperlink{_meliora_service_8cs_source_l00013}{13}} of file \mbox{\hyperlink{_meliora_service_8cs_source}{Meliora\+Service.\+cs}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Meliora.\+Services/\+Cookies\+Kristen/\mbox{\hyperlink{_meliora_service_8cs}{Meliora\+Service.\+cs}}\end{DoxyCompactItemize}

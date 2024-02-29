@@ -1,0 +1,148 @@
+\doxysection{Mail\+Notification\+Service.\+cs}
+\hypertarget{_mail_notification_service_8cs_source}{}\label{_mail_notification_service_8cs_source}\index{Meliora.Services/CookiesKristen/MailNotificationService.cs@{Meliora.Services/CookiesKristen/MailNotificationService.cs}}
+\mbox{\hyperlink{_mail_notification_service_8cs}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System.Runtime.InteropServices;}
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_meliora_1_1_domain_1_1_enum}{Meliora.Domain.Enum}};}
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_meliora_1_1_domain_1_1_models_1_1_cookies_kristen}{Meliora.Domain.Models.CookiesKristen}};}
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00004}00004\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_meliora_1_1_services_1_1_cookies_kristen_1_1_interfaces}{Meliora.Services.CookiesKristen.Interfaces}};}
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00005}00005\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_meliora_1_1_services_1_1_cookies_kristen_1_1_mail_hog_dependencies}{Meliora.Services.CookiesKristen.MailHogDependencies}};}
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00006}00006\ \textcolor{keyword}{using\ }System.Text.Json;}
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00007}00007\ \textcolor{keyword}{using\ }System.Text.RegularExpressions;}
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00008}00008\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_meliora_1_1_repository_1_1_context}{Meliora.Repository.Context}};}
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00009}00009\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_meliora_1_1_services_1_1_exceptions}{Meliora.Services.Exceptions}};}
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00010}00010\ \textcolor{keyword}{using\ }Microsoft.EntityFrameworkCore;}
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00012}00012\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_meliora_1_1_services_1_1_cookies_kristen}{Meliora.Services.CookiesKristen}};}
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00019}\mbox{\hyperlink{class_meliora_1_1_services_1_1_cookies_kristen_1_1_mail_notification_service}{00019}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_meliora_1_1_services_1_1_cookies_kristen_1_1_mail_notification_service}{MailNotificationService}}\ :\ \mbox{\hyperlink{interface_meliora_1_1_services_1_1_cookies_kristen_1_1_interfaces_1_1_i_mail_notification_service}{IMailNotificationService}}}
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00020}00020\ \{}
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00021}00021\ \ \ \ \ \textcolor{keyword}{private}\ readonly\ CancellationTokenSource\ \_cancellationTokenSource;}
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00022}00022\ \ \ \ \ \textcolor{keyword}{private}\ readonly\ Thread\ \_thread;}
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00023}00023\ \ \ \ \ \textcolor{keyword}{private}\ readonly\ HttpClient\ \_httpClient;}
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00025}\mbox{\hyperlink{class_meliora_1_1_services_1_1_cookies_kristen_1_1_mail_notification_service_a0f3ed75191e37d82c8743faf2bdd770b}{00025}}\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_meliora_1_1_services_1_1_cookies_kristen_1_1_mail_notification_service_a0f3ed75191e37d82c8743faf2bdd770b}{MailNotificationService}}()}
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00026}00026\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ \_cancellationTokenSource\ =\ \textcolor{keyword}{new}\ CancellationTokenSource();}
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ \_httpClient\ =\ \textcolor{keyword}{new}\ HttpClient();}
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00029}00029\ }
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ \_thread\ =\ \textcolor{keyword}{new}\ Thread(async\ ()\ =>}
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Thread.Sleep(TimeSpan.FromSeconds(15));}
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (!\_cancellationTokenSource.IsCancellationRequested)}
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ await\ FetchMailHogMessagesAsync();}
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Thread.Sleep(TimeSpan.FromSeconds(30));}
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (OperationCanceledException)}
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_cancellationTokenSource.Cancel();}
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00048}00048\ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00049}00049\ }
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00050}00050\ \ \ \ \ \ \ \ \ \_thread.Start();}
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00051}00051\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00052}00052\ }
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00053}00053\ \ \ \ \ \textcolor{keyword}{private}\ async\ Task\ FetchMailHogMessagesAsync()}
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00054}00054\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00055}00055\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00056}00056\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00057}00057\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\ mailHogApiUrl\ =\ \textcolor{stringliteral}{"{}http://mailhog:8025/api/v2/messages"{}};}
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00058}00058\ \ \ \ \ \ \ \ \ \ \ \ \ var\ response\ =\ await\ \_httpClient.GetAsync(mailHogApiUrl);}
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00059}00059\ \ \ \ \ \ \ \ \ \ \ \ \ response.EnsureSuccessStatusCode();}
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00060}00060\ \ \ \ \ \ \ \ \ \ \ \ \ var\ responseBody\ =\ await\ response.Content.ReadAsStringAsync();}
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00061}00061\ }
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00062}00062\ \ \ \ \ \ \ \ \ \ \ \ \ var\ messages\ =\ JsonSerializer.Deserialize<\mbox{\hyperlink{class_meliora_1_1_services_1_1_cookies_kristen_1_1_mail_hog_dependencies_1_1_mailhog_response}{MailhogResponse}}>(responseBody);}
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00063}00063\ }
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00064}00064\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (messages\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00065}00065\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00066}00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (var\ message\ \textcolor{keywordflow}{in}\ messages.items)}
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00067}00067\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00068}00068\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ quantityMatch\ =\ Regex.Match(message.Content.Body\ ??\ \textcolor{keywordtype}{string}.Empty,\ \textcolor{stringliteral}{@"{}Quantity:\ (\(\backslash\)d+)"{}});}
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00069}00069\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ flavorsMatch\ =\ Regex.Match(message.Content.Body\ ??\ \textcolor{keywordtype}{string}.Empty,\ \textcolor{stringliteral}{@"{}Flavors:\ ([\(\backslash\)w,\ ]+)"{}});}
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00070}00070\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ nameMatch\ =\ Regex.Match(message.Content.Body\ ??\ \textcolor{keywordtype}{string}.Empty,\ \textcolor{stringliteral}{@"{}Name:\ ([\(\backslash\)w\ ]+)"{}});}
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00071}00071\ }
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00072}00072\ }
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00073}00073\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!quantityMatch.Success\ ||\ !flavorsMatch.Success\ ||\ !nameMatch.Success)}
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00074}00074\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00075}00075\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00076}00076\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00077}00077\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ quantity\ =\ \textcolor{keywordtype}{int}.Parse(quantityMatch.Groups[1].Value);}
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00078}00078\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ flavors\ =\ flavorsMatch.Groups[1].Value.Split([\textcolor{stringliteral}{"{},\ "{}}],\ StringSplitOptions.None);}
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00079}00079\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ name\ =\ nameMatch.Groups[1].Value;}
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00080}00080\ }
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00081}00081\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ mixins\ =\ flavors.Select(flavor\ =>\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_meliora_1_1_domain_1_1_models_1_1_cookies_kristen_1_1_mixin}{Mixin}}(name:\ flavor)).ToList();}
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00082}00082\ }
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00083}00083\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ customer\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_meliora_1_1_domain_1_1_models_1_1_cookies_kristen_1_1_customer}{Customer}}(name,\ \$\textcolor{stringliteral}{"{}\{message.From.Mailbox\}@\{message.From.Domain\}"{}});}
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00084}00084\ }
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00085}00085\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Workaround\ to\ use\ the\ DbContext\ in\ a\ non-\/HTTP\ context}}
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00086}00086\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Blazor\ for\ some\ unkonwn\ reason\ is\ not\ working\ for\ Singleton\ and\ I\ could\ not\ pretty\ way\ to\ solve\ this\ for\ now}}
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00087}00087\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ optionsBuilder\ =\ \textcolor{keyword}{new}\ DbContextOptionsBuilder<CookieKristenDbContext>();}
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00088}00088\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ optionsBuilder.UseSqlServer(\textcolor{stringliteral}{"{}Server=db,1433;Database=CookieKristen;User=sa;Password=YourStrong!Passw0rd;TrustServerCertificate=True"{}});}
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00089}00089\ }
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00090}00090\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ await\ \textcolor{keyword}{using\ }var\ context\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{namespace_meliora_1_1_repository_1_1_context_a0657063a93fdc52600cec310e4ef0352}{CookieKristenDbContext}}(optionsBuilder.Options);}
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00091}00091\ }
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00092}00092\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ await\ \textcolor{keyword}{using\ }var\ orderService\ =\ \textcolor{keyword}{new}\ OrderService(context);}
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00093}00093\ }
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00094}00094\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ order\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_meliora_1_1_domain_1_1_models_1_1_cookies_kristen_1_1_order}{Order}}(customer,\ quantity,\ mixins,\ \mbox{\hyperlink{namespace_meliora_1_1_domain_1_1_enum_ab660eecbf39952d8f4cae23eeeb91675}{OrderStatus}}.Pending);}
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00095}00095\ }
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00096}00096\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00097}00097\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00098}00098\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ await\ orderService.ProcessOrderAsync(order);}
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00099}00099\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ await\ \mbox{\hyperlink{class_meliora_1_1_services_1_1_cookies_kristen_1_1_mail_notification_service_a8685430b764af7f7914e7907a5b03467}{DeleteMailHogMessageAsync}}(message.id);}
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00100}00100\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00101}00101\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (FailedToOrderCookieException\ e)}
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00102}00102\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00103}00103\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ await\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_meliora_1_1_services_1_1_cookies_kristen_1_1_mail_hog_service}{MailHogService}}().\mbox{\hyperlink{class_meliora_1_1_services_1_1_cookies_kristen_1_1_mail_hog_service_aac8a8cb2fa7fc4edee76eccc392a5e79}{SendEmailAsync}}(\textcolor{stringliteral}{"{}kristen@cookies.com"{}},\ e.Message,\ e.Message);}
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00104}00104\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00105}00105\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00106}00106\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00107}00107\ }
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00108}00108\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00109}00109\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (HttpRequestException\ e)}
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00110}00110\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00111}00111\ \ \ \ \ \ \ \ \ \ \ \ \ Console.WriteLine(\textcolor{stringliteral}{"{}\(\backslash\)nException\ Caught!"{}});}
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00112}00112\ \ \ \ \ \ \ \ \ \ \ \ \ Console.WriteLine(\textcolor{stringliteral}{"{}Message\ :\{0\}\ "{}},\ e.Message);}
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00113}00113\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00114}00114\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00115}00115\ }
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00116}00116\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00117}00117\ }
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00118}00118\ }
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00119}\mbox{\hyperlink{class_meliora_1_1_services_1_1_cookies_kristen_1_1_mail_notification_service_ac3144664e86253c25801dda3e8ec4d83}{00119}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_meliora_1_1_services_1_1_cookies_kristen_1_1_mail_notification_service_ac3144664e86253c25801dda3e8ec4d83}{StopListening}}()}
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00120}00120\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00121}00121\ \ \ \ \ \ \ \ \ \_cancellationTokenSource.Cancel();}
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00122}00122\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\_thread.IsAlive)}
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00123}00123\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00124}00124\ \ \ \ \ \ \ \ \ \ \ \ \ \_thread.Join();}
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00125}00125\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00126}00126\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00127}00127\ }
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00128}\mbox{\hyperlink{class_meliora_1_1_services_1_1_cookies_kristen_1_1_mail_notification_service_af750f618f07f24f78958cb55eab91f99}{00128}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_meliora_1_1_services_1_1_cookies_kristen_1_1_mail_notification_service_af750f618f07f24f78958cb55eab91f99}{Dispose}}()}
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00129}00129\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00130}00130\ \ \ \ \ \ \ \ \ \_cancellationTokenSource.Dispose();}
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00131}00131\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00132}\mbox{\hyperlink{class_meliora_1_1_services_1_1_cookies_kristen_1_1_mail_notification_service_a8685430b764af7f7914e7907a5b03467}{00132}}\ \ \ \ \ \textcolor{keyword}{public}\ async\ Task\ \mbox{\hyperlink{class_meliora_1_1_services_1_1_cookies_kristen_1_1_mail_notification_service_a8685430b764af7f7914e7907a5b03467}{DeleteMailHogMessageAsync}}(\textcolor{keywordtype}{string}\ messageId)}
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00133}00133\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00134}00134\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00135}00135\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00136}00136\ \ \ \ \ \ \ \ \ \ \ \ \ var\ mailHogApiUrl\ =\ \$\textcolor{stringliteral}{"{}http://mailhog:8025/api/v1/messages/\{messageId\}"{}};}
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00137}00137\ \ \ \ \ \ \ \ \ \ \ \ \ var\ request\ =\ \textcolor{keyword}{new}\ HttpRequestMessage(HttpMethod.Delete,\ mailHogApiUrl);}
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00138}00138\ \ \ \ \ \ \ \ \ \ \ \ \ var\ response\ =\ await\ \_httpClient.SendAsync(request);}
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00139}00139\ \ \ \ \ \ \ \ \ \ \ \ \ response.EnsureSuccessStatusCode();}
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00140}00140\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00141}00141\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (HttpRequestException\ e)}
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00142}00142\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00143}00143\ \ \ \ \ \ \ \ \ \ \ \ \ Console.WriteLine(\textcolor{stringliteral}{"{}\(\backslash\)nException\ Caught!"{}});}
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00144}00144\ \ \ \ \ \ \ \ \ \ \ \ \ Console.WriteLine(\textcolor{stringliteral}{"{}Message:\ \{0\}"{}},\ e.Message);}
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00145}00145\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00146}00146\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_mail_notification_service_8cs_source_l00147}00147\ \}}
+
+\end{DoxyCode}

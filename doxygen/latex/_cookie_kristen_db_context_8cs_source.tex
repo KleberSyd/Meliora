@@ -1,0 +1,38 @@
+\doxysection{Cookie\+Kristen\+Db\+Context.\+cs}
+\hypertarget{_cookie_kristen_db_context_8cs_source}{}\label{_cookie_kristen_db_context_8cs_source}\index{Meliora.Repository/Context/CookieKristenDbContext.cs@{Meliora.Repository/Context/CookieKristenDbContext.cs}}
+\mbox{\hyperlink{_cookie_kristen_db_context_8cs}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_cookie_kristen_db_context_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_meliora_1_1_domain_1_1_models_1_1_cookies_kristen}{Meliora.Domain.Models.CookiesKristen}};}
+\DoxyCodeLine{\Hypertarget{_cookie_kristen_db_context_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }Microsoft.EntityFrameworkCore;}
+\DoxyCodeLine{\Hypertarget{_cookie_kristen_db_context_8cs_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{_cookie_kristen_db_context_8cs_source_l00004}\mbox{\hyperlink{namespace_meliora_1_1_repository}{00004}}\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_meliora_1_1_repository_1_1_context}{Meliora.Repository.Context}};}
+\DoxyCodeLine{\Hypertarget{_cookie_kristen_db_context_8cs_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{_cookie_kristen_db_context_8cs_source_l00006}\mbox{\hyperlink{namespace_meliora_1_1_repository_1_1_context_a0657063a93fdc52600cec310e4ef0352}{00006}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{namespace_meliora_1_1_repository_1_1_context_a0657063a93fdc52600cec310e4ef0352}{CookieKristenDbContext}}(DbContextOptions<\mbox{\hyperlink{namespace_meliora_1_1_repository_1_1_context_a0657063a93fdc52600cec310e4ef0352}{CookieKristenDbContext}}>\ options)\ :\ DbContext(options)}
+\DoxyCodeLine{\Hypertarget{_cookie_kristen_db_context_8cs_source_l00007}00007\ \{}
+\DoxyCodeLine{\Hypertarget{_cookie_kristen_db_context_8cs_source_l00008}00008\ \ \ \ \ \textcolor{keyword}{public}\ DbSet<Customer>\ Customers\ \{\ \textcolor{keyword}{get};\ \textcolor{keyword}{set};\ \}}
+\DoxyCodeLine{\Hypertarget{_cookie_kristen_db_context_8cs_source_l00009}00009\ \ \ \ \ \textcolor{keyword}{public}\ DbSet<Order>\ Orders\ \{\ \textcolor{keyword}{get};\ \textcolor{keyword}{set};\ \}}
+\DoxyCodeLine{\Hypertarget{_cookie_kristen_db_context_8cs_source_l00010}00010\ \ \ \ \ \textcolor{keyword}{public}\ DbSet<Mixin>\ Mixins\ \{\ \textcolor{keyword}{get};\ \textcolor{keyword}{set};\ \}}
+\DoxyCodeLine{\Hypertarget{_cookie_kristen_db_context_8cs_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{_cookie_kristen_db_context_8cs_source_l00012}00012\ \ \ \ \ \textcolor{keyword}{protected}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ OnConfiguring(DbContextOptionsBuilder\ optionsBuilder)}
+\DoxyCodeLine{\Hypertarget{_cookie_kristen_db_context_8cs_source_l00013}00013\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_cookie_kristen_db_context_8cs_source_l00014}00014\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ only\ for\ Migrations}}
+\DoxyCodeLine{\Hypertarget{_cookie_kristen_db_context_8cs_source_l00015}00015\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!optionsBuilder.IsConfigured)}
+\DoxyCodeLine{\Hypertarget{_cookie_kristen_db_context_8cs_source_l00016}00016\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_cookie_kristen_db_context_8cs_source_l00017}00017\ \ \ \ \ \ \ \ \ \ \ \ \ optionsBuilder.UseSqlServer(\textcolor{stringliteral}{"{}Server=db,1433;Database=CookieKristen;User=sa;Password=YourStrong!Passw0rd;TrustServerCertificate=True"{}});}
+\DoxyCodeLine{\Hypertarget{_cookie_kristen_db_context_8cs_source_l00018}00018\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_cookie_kristen_db_context_8cs_source_l00019}00019\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_cookie_kristen_db_context_8cs_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{_cookie_kristen_db_context_8cs_source_l00021}00021\ \ \ \ \ \textcolor{keyword}{protected}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ OnModelCreating(ModelBuilder\ modelBuilder)}
+\DoxyCodeLine{\Hypertarget{_cookie_kristen_db_context_8cs_source_l00022}00022\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_cookie_kristen_db_context_8cs_source_l00023}00023\ \ \ \ \ \ \ \ \ modelBuilder.Entity<\mbox{\hyperlink{class_meliora_1_1_domain_1_1_models_1_1_cookies_kristen_1_1_customer}{Customer}}>()}
+\DoxyCodeLine{\Hypertarget{_cookie_kristen_db_context_8cs_source_l00024}00024\ \ \ \ \ \ \ \ \ \ \ \ \ .HasKey(c\ =>\ c.Id);}
+\DoxyCodeLine{\Hypertarget{_cookie_kristen_db_context_8cs_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{_cookie_kristen_db_context_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ modelBuilder.Entity<\mbox{\hyperlink{class_meliora_1_1_domain_1_1_models_1_1_cookies_kristen_1_1_order}{Order}}>()}
+\DoxyCodeLine{\Hypertarget{_cookie_kristen_db_context_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ \ \ \ \ .HasKey(o\ =>\ o.Id);}
+\DoxyCodeLine{\Hypertarget{_cookie_kristen_db_context_8cs_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{_cookie_kristen_db_context_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ modelBuilder.Entity<\mbox{\hyperlink{class_meliora_1_1_domain_1_1_models_1_1_cookies_kristen_1_1_mixin}{Mixin}}>()}
+\DoxyCodeLine{\Hypertarget{_cookie_kristen_db_context_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ \ \ \ \ .HasKey(m\ =>\ m.Id);}
+\DoxyCodeLine{\Hypertarget{_cookie_kristen_db_context_8cs_source_l00031}00031\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_cookie_kristen_db_context_8cs_source_l00032}00032\ \}}
+
+\end{DoxyCode}

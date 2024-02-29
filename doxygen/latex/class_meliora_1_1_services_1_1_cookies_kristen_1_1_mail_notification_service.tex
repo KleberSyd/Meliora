@@ -1,0 +1,81 @@
+\doxysection{Meliora.\+Services.\+Cookies\+Kristen.\+Mail\+Notification\+Service Class Reference}
+\hypertarget{class_meliora_1_1_services_1_1_cookies_kristen_1_1_mail_notification_service}{}\label{class_meliora_1_1_services_1_1_cookies_kristen_1_1_mail_notification_service}\index{Meliora.Services.CookiesKristen.MailNotificationService@{Meliora.Services.CookiesKristen.MailNotificationService}}
+Inheritance diagram for Meliora.\+Services.\+Cookies\+Kristen.\+Mail\+Notification\+Service\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_meliora_1_1_services_1_1_cookies_kristen_1_1_mail_notification_service}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_meliora_1_1_services_1_1_cookies_kristen_1_1_mail_notification_service_a0f3ed75191e37d82c8743faf2bdd770b}{Mail\+Notification\+Service}} ()
+\item 
+void \mbox{\hyperlink{class_meliora_1_1_services_1_1_cookies_kristen_1_1_mail_notification_service_ac3144664e86253c25801dda3e8ec4d83}{Stop\+Listening}} ()
+\item 
+void \mbox{\hyperlink{class_meliora_1_1_services_1_1_cookies_kristen_1_1_mail_notification_service_af750f618f07f24f78958cb55eab91f99}{Dispose}} ()
+\item 
+async Task \mbox{\hyperlink{class_meliora_1_1_services_1_1_cookies_kristen_1_1_mail_notification_service_a8685430b764af7f7914e7907a5b03467}{Delete\+Mail\+Hog\+Message\+Async}} (string message\+Id)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+In a real-\/world scenario, this service would be responsible to collect messages from email server using IMAP or POP3 protocol. but the Mail\+Hog is a fake SMTP server for testing purposes, so we are using its API to fetch the messages. and only I can retrieve the messages from the Mail\+Hog server using the API. 
+
+Definition at line \mbox{\hyperlink{_mail_notification_service_8cs_source_l00019}{19}} of file \mbox{\hyperlink{_mail_notification_service_8cs_source}{Mail\+Notification\+Service.\+cs}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_meliora_1_1_services_1_1_cookies_kristen_1_1_mail_notification_service_a0f3ed75191e37d82c8743faf2bdd770b}\label{class_meliora_1_1_services_1_1_cookies_kristen_1_1_mail_notification_service_a0f3ed75191e37d82c8743faf2bdd770b} 
+\index{Meliora.Services.CookiesKristen.MailNotificationService@{Meliora.Services.CookiesKristen.MailNotificationService}!MailNotificationService@{MailNotificationService}}
+\index{MailNotificationService@{MailNotificationService}!Meliora.Services.CookiesKristen.MailNotificationService@{Meliora.Services.CookiesKristen.MailNotificationService}}
+\doxysubsubsection{\texorpdfstring{MailNotificationService()}{MailNotificationService()}}
+{\footnotesize\ttfamily Meliora.\+Services.\+Cookies\+Kristen.\+Mail\+Notification\+Service.\+Mail\+Notification\+Service (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_mail_notification_service_8cs_source_l00025}{25}} of file \mbox{\hyperlink{_mail_notification_service_8cs_source}{Mail\+Notification\+Service.\+cs}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_meliora_1_1_services_1_1_cookies_kristen_1_1_mail_notification_service_a8685430b764af7f7914e7907a5b03467}\label{class_meliora_1_1_services_1_1_cookies_kristen_1_1_mail_notification_service_a8685430b764af7f7914e7907a5b03467} 
+\index{Meliora.Services.CookiesKristen.MailNotificationService@{Meliora.Services.CookiesKristen.MailNotificationService}!DeleteMailHogMessageAsync@{DeleteMailHogMessageAsync}}
+\index{DeleteMailHogMessageAsync@{DeleteMailHogMessageAsync}!Meliora.Services.CookiesKristen.MailNotificationService@{Meliora.Services.CookiesKristen.MailNotificationService}}
+\doxysubsubsection{\texorpdfstring{DeleteMailHogMessageAsync()}{DeleteMailHogMessageAsync()}}
+{\footnotesize\ttfamily async Task Meliora.\+Services.\+Cookies\+Kristen.\+Mail\+Notification\+Service.\+Delete\+Mail\+Hog\+Message\+Async (\begin{DoxyParamCaption}\item[{string}]{message\+Id }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_mail_notification_service_8cs_source_l00132}{132}} of file \mbox{\hyperlink{_mail_notification_service_8cs_source}{Mail\+Notification\+Service.\+cs}}.
+
+\Hypertarget{class_meliora_1_1_services_1_1_cookies_kristen_1_1_mail_notification_service_af750f618f07f24f78958cb55eab91f99}\label{class_meliora_1_1_services_1_1_cookies_kristen_1_1_mail_notification_service_af750f618f07f24f78958cb55eab91f99} 
+\index{Meliora.Services.CookiesKristen.MailNotificationService@{Meliora.Services.CookiesKristen.MailNotificationService}!Dispose@{Dispose}}
+\index{Dispose@{Dispose}!Meliora.Services.CookiesKristen.MailNotificationService@{Meliora.Services.CookiesKristen.MailNotificationService}}
+\doxysubsubsection{\texorpdfstring{Dispose()}{Dispose()}}
+{\footnotesize\ttfamily void Meliora.\+Services.\+Cookies\+Kristen.\+Mail\+Notification\+Service.\+Dispose (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_mail_notification_service_8cs_source_l00128}{128}} of file \mbox{\hyperlink{_mail_notification_service_8cs_source}{Mail\+Notification\+Service.\+cs}}.
+
+\Hypertarget{class_meliora_1_1_services_1_1_cookies_kristen_1_1_mail_notification_service_ac3144664e86253c25801dda3e8ec4d83}\label{class_meliora_1_1_services_1_1_cookies_kristen_1_1_mail_notification_service_ac3144664e86253c25801dda3e8ec4d83} 
+\index{Meliora.Services.CookiesKristen.MailNotificationService@{Meliora.Services.CookiesKristen.MailNotificationService}!StopListening@{StopListening}}
+\index{StopListening@{StopListening}!Meliora.Services.CookiesKristen.MailNotificationService@{Meliora.Services.CookiesKristen.MailNotificationService}}
+\doxysubsubsection{\texorpdfstring{StopListening()}{StopListening()}}
+{\footnotesize\ttfamily void Meliora.\+Services.\+Cookies\+Kristen.\+Mail\+Notification\+Service.\+Stop\+Listening (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Implements \mbox{\hyperlink{interface_meliora_1_1_services_1_1_cookies_kristen_1_1_interfaces_1_1_i_mail_notification_service_a6da0e3d32ce3bff558bfeff3e270d6ef}{Meliora.\+Services.\+Cookies\+Kristen.\+Interfaces.\+IMail\+Notification\+Service}}.
+
+
+
+Definition at line \mbox{\hyperlink{_mail_notification_service_8cs_source_l00119}{119}} of file \mbox{\hyperlink{_mail_notification_service_8cs_source}{Mail\+Notification\+Service.\+cs}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Meliora.\+Services/\+Cookies\+Kristen/\mbox{\hyperlink{_mail_notification_service_8cs}{Mail\+Notification\+Service.\+cs}}\end{DoxyCompactItemize}

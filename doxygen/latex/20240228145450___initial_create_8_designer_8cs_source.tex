@@ -1,0 +1,133 @@
+\doxysection{20240228145450\+\_\+\+Initial\+Create.\+Designer.\+cs}
+\hypertarget{20240228145450___initial_create_8_designer_8cs_source}{}\label{20240228145450___initial_create_8_designer_8cs_source}\index{Meliora.Repository/Migrations/20240228145450\_InitialCreate.Designer.cs@{Meliora.Repository/Migrations/20240228145450\_InitialCreate.Designer.cs}}
+\mbox{\hyperlink{20240228145450___initial_create_8_designer_8cs}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{20240228145450___initial_create_8_designer_8cs_source_l00001}00001\ \textcolor{comment}{//\ <auto-\/generated\ />}}
+\DoxyCodeLine{\Hypertarget{20240228145450___initial_create_8_designer_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{20240228145450___initial_create_8_designer_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_meliora_1_1_repository_1_1_context}{Meliora.Repository.Context}};}
+\DoxyCodeLine{\Hypertarget{20240228145450___initial_create_8_designer_8cs_source_l00004}00004\ \textcolor{keyword}{using\ }Microsoft.EntityFrameworkCore;}
+\DoxyCodeLine{\Hypertarget{20240228145450___initial_create_8_designer_8cs_source_l00005}00005\ \textcolor{keyword}{using\ }Microsoft.EntityFrameworkCore.Infrastructure;}
+\DoxyCodeLine{\Hypertarget{20240228145450___initial_create_8_designer_8cs_source_l00006}00006\ \textcolor{keyword}{using\ }Microsoft.EntityFrameworkCore.Metadata;}
+\DoxyCodeLine{\Hypertarget{20240228145450___initial_create_8_designer_8cs_source_l00007}00007\ \textcolor{keyword}{using\ }Microsoft.EntityFrameworkCore.Migrations;}
+\DoxyCodeLine{\Hypertarget{20240228145450___initial_create_8_designer_8cs_source_l00008}00008\ \textcolor{keyword}{using\ }Microsoft.EntityFrameworkCore.Storage.ValueConversion;}
+\DoxyCodeLine{\Hypertarget{20240228145450___initial_create_8_designer_8cs_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{20240228145450___initial_create_8_designer_8cs_source_l00010}00010\ \textcolor{preprocessor}{\#nullable\ disable}}
+\DoxyCodeLine{\Hypertarget{20240228145450___initial_create_8_designer_8cs_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{20240228145450___initial_create_8_designer_8cs_source_l00012}00012\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_meliora_1_1_repository_1_1_migrations}{Meliora.Repository.Migrations}}}
+\DoxyCodeLine{\Hypertarget{20240228145450___initial_create_8_designer_8cs_source_l00013}00013\ \{}
+\DoxyCodeLine{\Hypertarget{20240228145450___initial_create_8_designer_8cs_source_l00014}00014\ \ \ \ \ [DbContext(typeof(\mbox{\hyperlink{namespace_meliora_1_1_repository_1_1_context_a0657063a93fdc52600cec310e4ef0352}{CookieKristenDbContext}}))]}
+\DoxyCodeLine{\Hypertarget{20240228145450___initial_create_8_designer_8cs_source_l00015}00015\ \ \ \ \ [Migration(\textcolor{stringliteral}{"{}20240228145450\_InitialCreate"{}})]}
+\DoxyCodeLine{\Hypertarget{20240228145450___initial_create_8_designer_8cs_source_l00016}00016\ \ \ \ \ \textcolor{keyword}{partial\ class\ }InitialCreate}
+\DoxyCodeLine{\Hypertarget{20240228145450___initial_create_8_designer_8cs_source_l00017}00017\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{20240228145450___initial_create_8_designer_8cs_source_l00019}\mbox{\hyperlink{class_meliora_1_1_repository_1_1_migrations_1_1_initial_create_a4195d53c56dfcea3b96caa76346a6fcb}{00019}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{protected}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_meliora_1_1_repository_1_1_migrations_1_1_initial_create_a4195d53c56dfcea3b96caa76346a6fcb}{BuildTargetModel}}(ModelBuilder\ modelBuilder)}
+\DoxyCodeLine{\Hypertarget{20240228145450___initial_create_8_designer_8cs_source_l00020}00020\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{20240228145450___initial_create_8_designer_8cs_source_l00021}00021\ \textcolor{preprocessor}{\#pragma\ warning\ disable\ 612,\ 618}}
+\DoxyCodeLine{\Hypertarget{20240228145450___initial_create_8_designer_8cs_source_l00022}00022\ \ \ \ \ \ \ \ \ \ \ \ \ modelBuilder}
+\DoxyCodeLine{\Hypertarget{20240228145450___initial_create_8_designer_8cs_source_l00023}00023\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .HasAnnotation(\textcolor{stringliteral}{"{}ProductVersion"{}},\ \textcolor{stringliteral}{"{}8.0.2"{}})}
+\DoxyCodeLine{\Hypertarget{20240228145450___initial_create_8_designer_8cs_source_l00024}00024\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .HasAnnotation(\textcolor{stringliteral}{"{}Relational:MaxIdentifierLength"{}},\ 128);}
+\DoxyCodeLine{\Hypertarget{20240228145450___initial_create_8_designer_8cs_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{20240228145450___initial_create_8_designer_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ \ \ \ \ SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);}
+\DoxyCodeLine{\Hypertarget{20240228145450___initial_create_8_designer_8cs_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{20240228145450___initial_create_8_designer_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ \ \ \ \ modelBuilder.Entity(\textcolor{stringliteral}{"{}Meliora.Domain.Models.CookiesKristen.Customer"{}},\ b\ =>}
+\DoxyCodeLine{\Hypertarget{20240228145450___initial_create_8_designer_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{20240228145450___initial_create_8_designer_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ b.Property<\textcolor{keywordtype}{int}>(\textcolor{stringliteral}{"{}Id"{}})}
+\DoxyCodeLine{\Hypertarget{20240228145450___initial_create_8_designer_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .ValueGeneratedOnAdd()}
+\DoxyCodeLine{\Hypertarget{20240228145450___initial_create_8_designer_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .HasColumnType(\textcolor{stringliteral}{"{}int"{}});}
+\DoxyCodeLine{\Hypertarget{20240228145450___initial_create_8_designer_8cs_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{20240228145450___initial_create_8_designer_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<\textcolor{keywordtype}{int}>(\textcolor{stringliteral}{"{}Id"{}}));}
+\DoxyCodeLine{\Hypertarget{20240228145450___initial_create_8_designer_8cs_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{20240228145450___initial_create_8_designer_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ b.Property<\textcolor{keywordtype}{string}>(\textcolor{stringliteral}{"{}Email"{}})}
+\DoxyCodeLine{\Hypertarget{20240228145450___initial_create_8_designer_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .IsRequired()}
+\DoxyCodeLine{\Hypertarget{20240228145450___initial_create_8_designer_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .HasColumnType(\textcolor{stringliteral}{"{}nvarchar(max)"{}});}
+\DoxyCodeLine{\Hypertarget{20240228145450___initial_create_8_designer_8cs_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{20240228145450___initial_create_8_designer_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ b.Property<\textcolor{keywordtype}{string}>(\textcolor{stringliteral}{"{}Name"{}})}
+\DoxyCodeLine{\Hypertarget{20240228145450___initial_create_8_designer_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .IsRequired()}
+\DoxyCodeLine{\Hypertarget{20240228145450___initial_create_8_designer_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .HasColumnType(\textcolor{stringliteral}{"{}nvarchar(max)"{}});}
+\DoxyCodeLine{\Hypertarget{20240228145450___initial_create_8_designer_8cs_source_l00043}00043\ }
+\DoxyCodeLine{\Hypertarget{20240228145450___initial_create_8_designer_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ b.HasKey(\textcolor{stringliteral}{"{}Id"{}});}
+\DoxyCodeLine{\Hypertarget{20240228145450___initial_create_8_designer_8cs_source_l00045}00045\ }
+\DoxyCodeLine{\Hypertarget{20240228145450___initial_create_8_designer_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ b.ToTable(\textcolor{stringliteral}{"{}Customers"{}});}
+\DoxyCodeLine{\Hypertarget{20240228145450___initial_create_8_designer_8cs_source_l00047}00047\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{20240228145450___initial_create_8_designer_8cs_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{20240228145450___initial_create_8_designer_8cs_source_l00049}00049\ \ \ \ \ \ \ \ \ \ \ \ \ modelBuilder.Entity(\textcolor{stringliteral}{"{}Meliora.Domain.Models.CookiesKristen.Mixin"{}},\ b\ =>}
+\DoxyCodeLine{\Hypertarget{20240228145450___initial_create_8_designer_8cs_source_l00050}00050\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{20240228145450___initial_create_8_designer_8cs_source_l00051}00051\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ b.Property<\textcolor{keywordtype}{int}>(\textcolor{stringliteral}{"{}Id"{}})}
+\DoxyCodeLine{\Hypertarget{20240228145450___initial_create_8_designer_8cs_source_l00052}00052\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .ValueGeneratedOnAdd()}
+\DoxyCodeLine{\Hypertarget{20240228145450___initial_create_8_designer_8cs_source_l00053}00053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .HasColumnType(\textcolor{stringliteral}{"{}int"{}});}
+\DoxyCodeLine{\Hypertarget{20240228145450___initial_create_8_designer_8cs_source_l00054}00054\ }
+\DoxyCodeLine{\Hypertarget{20240228145450___initial_create_8_designer_8cs_source_l00055}00055\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<\textcolor{keywordtype}{int}>(\textcolor{stringliteral}{"{}Id"{}}));}
+\DoxyCodeLine{\Hypertarget{20240228145450___initial_create_8_designer_8cs_source_l00056}00056\ }
+\DoxyCodeLine{\Hypertarget{20240228145450___initial_create_8_designer_8cs_source_l00057}00057\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ b.Property<\textcolor{keywordtype}{string}>(\textcolor{stringliteral}{"{}Name"{}})}
+\DoxyCodeLine{\Hypertarget{20240228145450___initial_create_8_designer_8cs_source_l00058}00058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .IsRequired()}
+\DoxyCodeLine{\Hypertarget{20240228145450___initial_create_8_designer_8cs_source_l00059}00059\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .HasColumnType(\textcolor{stringliteral}{"{}nvarchar(max)"{}});}
+\DoxyCodeLine{\Hypertarget{20240228145450___initial_create_8_designer_8cs_source_l00060}00060\ }
+\DoxyCodeLine{\Hypertarget{20240228145450___initial_create_8_designer_8cs_source_l00061}00061\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ b.Property<\textcolor{keywordtype}{int}?>(\textcolor{stringliteral}{"{}OrderId"{}})}
+\DoxyCodeLine{\Hypertarget{20240228145450___initial_create_8_designer_8cs_source_l00062}00062\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .HasColumnType(\textcolor{stringliteral}{"{}int"{}});}
+\DoxyCodeLine{\Hypertarget{20240228145450___initial_create_8_designer_8cs_source_l00063}00063\ }
+\DoxyCodeLine{\Hypertarget{20240228145450___initial_create_8_designer_8cs_source_l00064}00064\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ b.Property<\textcolor{keywordtype}{int}>(\textcolor{stringliteral}{"{}StockQuantity"{}})}
+\DoxyCodeLine{\Hypertarget{20240228145450___initial_create_8_designer_8cs_source_l00065}00065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .HasColumnType(\textcolor{stringliteral}{"{}int"{}});}
+\DoxyCodeLine{\Hypertarget{20240228145450___initial_create_8_designer_8cs_source_l00066}00066\ }
+\DoxyCodeLine{\Hypertarget{20240228145450___initial_create_8_designer_8cs_source_l00067}00067\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ b.HasKey(\textcolor{stringliteral}{"{}Id"{}});}
+\DoxyCodeLine{\Hypertarget{20240228145450___initial_create_8_designer_8cs_source_l00068}00068\ }
+\DoxyCodeLine{\Hypertarget{20240228145450___initial_create_8_designer_8cs_source_l00069}00069\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ b.HasIndex(\textcolor{stringliteral}{"{}OrderId"{}});}
+\DoxyCodeLine{\Hypertarget{20240228145450___initial_create_8_designer_8cs_source_l00070}00070\ }
+\DoxyCodeLine{\Hypertarget{20240228145450___initial_create_8_designer_8cs_source_l00071}00071\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ b.ToTable(\textcolor{stringliteral}{"{}Mixins"{}});}
+\DoxyCodeLine{\Hypertarget{20240228145450___initial_create_8_designer_8cs_source_l00072}00072\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{20240228145450___initial_create_8_designer_8cs_source_l00073}00073\ }
+\DoxyCodeLine{\Hypertarget{20240228145450___initial_create_8_designer_8cs_source_l00074}00074\ \ \ \ \ \ \ \ \ \ \ \ \ modelBuilder.Entity(\textcolor{stringliteral}{"{}Meliora.Domain.Models.CookiesKristen.Order"{}},\ b\ =>}
+\DoxyCodeLine{\Hypertarget{20240228145450___initial_create_8_designer_8cs_source_l00075}00075\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{20240228145450___initial_create_8_designer_8cs_source_l00076}00076\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ b.Property<\textcolor{keywordtype}{int}>(\textcolor{stringliteral}{"{}Id"{}})}
+\DoxyCodeLine{\Hypertarget{20240228145450___initial_create_8_designer_8cs_source_l00077}00077\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .ValueGeneratedOnAdd()}
+\DoxyCodeLine{\Hypertarget{20240228145450___initial_create_8_designer_8cs_source_l00078}00078\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .HasColumnType(\textcolor{stringliteral}{"{}int"{}});}
+\DoxyCodeLine{\Hypertarget{20240228145450___initial_create_8_designer_8cs_source_l00079}00079\ }
+\DoxyCodeLine{\Hypertarget{20240228145450___initial_create_8_designer_8cs_source_l00080}00080\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<\textcolor{keywordtype}{int}>(\textcolor{stringliteral}{"{}Id"{}}));}
+\DoxyCodeLine{\Hypertarget{20240228145450___initial_create_8_designer_8cs_source_l00081}00081\ }
+\DoxyCodeLine{\Hypertarget{20240228145450___initial_create_8_designer_8cs_source_l00082}00082\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ b.Property<\textcolor{keywordtype}{int}>(\textcolor{stringliteral}{"{}CustomerId"{}})}
+\DoxyCodeLine{\Hypertarget{20240228145450___initial_create_8_designer_8cs_source_l00083}00083\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .HasColumnType(\textcolor{stringliteral}{"{}int"{}});}
+\DoxyCodeLine{\Hypertarget{20240228145450___initial_create_8_designer_8cs_source_l00084}00084\ }
+\DoxyCodeLine{\Hypertarget{20240228145450___initial_create_8_designer_8cs_source_l00085}00085\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ b.Property<\textcolor{keywordtype}{int}>(\textcolor{stringliteral}{"{}Quantity"{}})}
+\DoxyCodeLine{\Hypertarget{20240228145450___initial_create_8_designer_8cs_source_l00086}00086\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .HasColumnType(\textcolor{stringliteral}{"{}int"{}});}
+\DoxyCodeLine{\Hypertarget{20240228145450___initial_create_8_designer_8cs_source_l00087}00087\ }
+\DoxyCodeLine{\Hypertarget{20240228145450___initial_create_8_designer_8cs_source_l00088}00088\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ b.Property<\textcolor{keywordtype}{int}>(\textcolor{stringliteral}{"{}Status"{}})}
+\DoxyCodeLine{\Hypertarget{20240228145450___initial_create_8_designer_8cs_source_l00089}00089\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .HasColumnType(\textcolor{stringliteral}{"{}int"{}});}
+\DoxyCodeLine{\Hypertarget{20240228145450___initial_create_8_designer_8cs_source_l00090}00090\ }
+\DoxyCodeLine{\Hypertarget{20240228145450___initial_create_8_designer_8cs_source_l00091}00091\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ b.HasKey(\textcolor{stringliteral}{"{}Id"{}});}
+\DoxyCodeLine{\Hypertarget{20240228145450___initial_create_8_designer_8cs_source_l00092}00092\ }
+\DoxyCodeLine{\Hypertarget{20240228145450___initial_create_8_designer_8cs_source_l00093}00093\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ b.HasIndex(\textcolor{stringliteral}{"{}CustomerId"{}});}
+\DoxyCodeLine{\Hypertarget{20240228145450___initial_create_8_designer_8cs_source_l00094}00094\ }
+\DoxyCodeLine{\Hypertarget{20240228145450___initial_create_8_designer_8cs_source_l00095}00095\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ b.ToTable(\textcolor{stringliteral}{"{}Orders"{}});}
+\DoxyCodeLine{\Hypertarget{20240228145450___initial_create_8_designer_8cs_source_l00096}00096\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{20240228145450___initial_create_8_designer_8cs_source_l00097}00097\ }
+\DoxyCodeLine{\Hypertarget{20240228145450___initial_create_8_designer_8cs_source_l00098}00098\ \ \ \ \ \ \ \ \ \ \ \ \ modelBuilder.Entity(\textcolor{stringliteral}{"{}Meliora.Domain.Models.CookiesKristen.Mixin"{}},\ b\ =>}
+\DoxyCodeLine{\Hypertarget{20240228145450___initial_create_8_designer_8cs_source_l00099}00099\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{20240228145450___initial_create_8_designer_8cs_source_l00100}00100\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ b.HasOne(\textcolor{stringliteral}{"{}Meliora.Domain.Models.CookiesKristen.Order"{}},\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{20240228145450___initial_create_8_designer_8cs_source_l00101}00101\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .WithMany(\textcolor{stringliteral}{"{}Mixins"{}})}
+\DoxyCodeLine{\Hypertarget{20240228145450___initial_create_8_designer_8cs_source_l00102}00102\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .HasForeignKey(\textcolor{stringliteral}{"{}OrderId"{}});}
+\DoxyCodeLine{\Hypertarget{20240228145450___initial_create_8_designer_8cs_source_l00103}00103\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{20240228145450___initial_create_8_designer_8cs_source_l00104}00104\ }
+\DoxyCodeLine{\Hypertarget{20240228145450___initial_create_8_designer_8cs_source_l00105}00105\ \ \ \ \ \ \ \ \ \ \ \ \ modelBuilder.Entity(\textcolor{stringliteral}{"{}Meliora.Domain.Models.CookiesKristen.Order"{}},\ b\ =>}
+\DoxyCodeLine{\Hypertarget{20240228145450___initial_create_8_designer_8cs_source_l00106}00106\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{20240228145450___initial_create_8_designer_8cs_source_l00107}00107\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ b.HasOne(\textcolor{stringliteral}{"{}Meliora.Domain.Models.CookiesKristen.Customer"{}},\ \textcolor{stringliteral}{"{}Customer"{}})}
+\DoxyCodeLine{\Hypertarget{20240228145450___initial_create_8_designer_8cs_source_l00108}00108\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .WithMany(\textcolor{stringliteral}{"{}Orders"{}})}
+\DoxyCodeLine{\Hypertarget{20240228145450___initial_create_8_designer_8cs_source_l00109}00109\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .HasForeignKey(\textcolor{stringliteral}{"{}CustomerId"{}})}
+\DoxyCodeLine{\Hypertarget{20240228145450___initial_create_8_designer_8cs_source_l00110}00110\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .OnDelete(DeleteBehavior.Cascade)}
+\DoxyCodeLine{\Hypertarget{20240228145450___initial_create_8_designer_8cs_source_l00111}00111\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .IsRequired();}
+\DoxyCodeLine{\Hypertarget{20240228145450___initial_create_8_designer_8cs_source_l00112}00112\ }
+\DoxyCodeLine{\Hypertarget{20240228145450___initial_create_8_designer_8cs_source_l00113}00113\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ b.Navigation(\textcolor{stringliteral}{"{}Customer"{}});}
+\DoxyCodeLine{\Hypertarget{20240228145450___initial_create_8_designer_8cs_source_l00114}00114\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{20240228145450___initial_create_8_designer_8cs_source_l00115}00115\ }
+\DoxyCodeLine{\Hypertarget{20240228145450___initial_create_8_designer_8cs_source_l00116}00116\ \ \ \ \ \ \ \ \ \ \ \ \ modelBuilder.Entity(\textcolor{stringliteral}{"{}Meliora.Domain.Models.CookiesKristen.Customer"{}},\ b\ =>}
+\DoxyCodeLine{\Hypertarget{20240228145450___initial_create_8_designer_8cs_source_l00117}00117\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{20240228145450___initial_create_8_designer_8cs_source_l00118}00118\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ b.Navigation(\textcolor{stringliteral}{"{}Orders"{}});}
+\DoxyCodeLine{\Hypertarget{20240228145450___initial_create_8_designer_8cs_source_l00119}00119\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{20240228145450___initial_create_8_designer_8cs_source_l00120}00120\ }
+\DoxyCodeLine{\Hypertarget{20240228145450___initial_create_8_designer_8cs_source_l00121}00121\ \ \ \ \ \ \ \ \ \ \ \ \ modelBuilder.Entity(\textcolor{stringliteral}{"{}Meliora.Domain.Models.CookiesKristen.Order"{}},\ b\ =>}
+\DoxyCodeLine{\Hypertarget{20240228145450___initial_create_8_designer_8cs_source_l00122}00122\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{20240228145450___initial_create_8_designer_8cs_source_l00123}00123\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ b.Navigation(\textcolor{stringliteral}{"{}Mixins"{}});}
+\DoxyCodeLine{\Hypertarget{20240228145450___initial_create_8_designer_8cs_source_l00124}00124\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{20240228145450___initial_create_8_designer_8cs_source_l00125}00125\ \textcolor{preprocessor}{\#pragma\ warning\ restore\ 612,\ 618}}
+\DoxyCodeLine{\Hypertarget{20240228145450___initial_create_8_designer_8cs_source_l00126}00126\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{20240228145450___initial_create_8_designer_8cs_source_l00127}00127\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{20240228145450___initial_create_8_designer_8cs_source_l00128}00128\ \}}
+
+\end{DoxyCode}
