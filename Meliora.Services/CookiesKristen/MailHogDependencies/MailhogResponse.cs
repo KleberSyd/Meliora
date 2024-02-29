@@ -3,5 +3,5 @@
 
 public class MailhogResponse
 {
-    public Item[] items { get; set; }
+    public Item[]? items { get; set; }
 }

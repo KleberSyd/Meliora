@@ -38,7 +38,7 @@ else
                     <td>
                         @if (order.Status != OrderStatus.Completed)
                         {
-                            <button @onclick="() => UpdateOrder(order)">Update Status</button>
+                            <button type="button" class="btn btn-primary" @onclick="@(async () => await UpdateOrderAsync(order))">Update Status</button>
                         }
                         else
                         {
@@ -64,12 +64,9 @@ else
         _orders = await OrderService.GetOrdersAsync();
     }
 
-}
-
-@functions
-{
-    private async Task UpdateOrder(Order order)
+    private async Task UpdateOrderAsync(Order order)
     {
+
         await OrderService.UpdateOrderStatusAsync(order.Id);
 
         await LoadOrdersAsync();
