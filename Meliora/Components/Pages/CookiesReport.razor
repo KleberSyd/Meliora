@@ -1,0 +1,59 @@
+﻿@page "/cookies-report"
+@using Meliora.Services.CookiesKristen.Interfaces
+@using Meliora.Services.CookiesKristen.Dto
+@attribute [StreamRendering]
+@inject IOrderService OrderService
+
+@if (_report == null)
+{
+    <p>Loading report...</p>
+}
+else
+{
+    <div class="container mt-5">
+        <h2 class="mb-4">Cookie Orders Report</h2>
+
+        <div class="row mb-3">
+            <div class="col">
+                <div class="card text-white bg-primary mb-3">
+                    <div class="card-header">Number of Orders</div>
+                    <div class="card-body">
+                        <h5 class="card-title">@_report.NumberOrders</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card text-white bg-success mb-3">
+                    <div class="card-header">Total Cookies</div>
+                    <div class="card-body">
+                        <h5 class="card-title">@_report.TotalCookies</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h3>Most Popular Mixins</h3>
+        <ul class="list-group">
+            @foreach (var mixin in _report.MostPopular)
+            {
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    @mixin.Name
+                </li>
+            }
+        </ul>
+    </div>
+}
+@code
+{
+    private ReportDto? _report;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadOrdersAsync();
+    }
+
+    private async Task LoadOrdersAsync()
+    {
+        _report = await OrderService.GetOrdersReportAsync();
+    }
+}
